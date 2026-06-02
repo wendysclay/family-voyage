@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A Family Voyage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#0B2A45">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Family Voyage">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #F6FAFB;
+    overscroll-behavior-y: none;
+  }
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #0B2A45;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  *::-webkit-scrollbar { width: 0; height: 0; }
+  button { font: inherit; }
+
+  /* Desktop: frame the phone-width column so it doesn't look weird on big screens */
+  @media (min-width: 560px) {
+    body {
+      background: #D5E2E7;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(193,138,51,0.06), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(19,107,120,0.06), transparent 40%);
+      display: flex;
+      justify-content: center;
+      padding: 32px 0;
+    }
+    #root {
+      max-width: 440px;
+      min-height: calc(100vh - 64px);
+      background: #F6FAFB;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel" data-presets="env,react">
+const { useState, useEffect, useRef } = React;
+
+// ─────────────────────────────────────────────────────────────
+// Design tokens
+// ─────────────────────────────────────────────────────────────
+const VA = {
+  cream: '#E7EFF1',
+  paper: '#F6FAFB',
+  ink: '#0B2A45',
+  inkSoft: '#3A5468',
+  inkMuted: '#7E97A6',
+  rule: '#D5E1E6',
+  forest: '#136B78',
+  forestDeep: '#0B4A54',
+  terracotta: '#C18A33',
+  gold: '#C9A24B',
+  white: '#FFFFFF',
+};
+const serif = `'Playfair Display', 'Times New Roman', Georgia, serif`;
+const sans = `'Inter', -apple-system, system-ui, sans-serif`;
+const mono = `'JetBrains Mono', ui-monospace, Menlo, monospace`;
+
+// ─────────────────────────────────────────────────────────────
+// Trip data
+// ─────────────────────────────────────────────────────────────
+const TRIP_META = {
+  title: 'A Family Voyage',
+  subtitle: '',
+  startDate: 'July 25, 2026',
+  endDate: 'July 31, 2026',
+  totalDays: 7,
+  heroImage: 'images/trip-hero.jpg',
+};
+
+const DAYS = [
+  {
+    id: 1, date: 'Sat, Jul 25', fullDate: 'Saturday, July 25, 2026',
+    city: 'Embarkation Day', subtitle: 'Anchors aweigh — arrival & a first night out',
+    hero: 'images/day-1-hero.jpg',
+    lodging: 'Port of Call · 105 Spring Lawn Road',
+    stops: [
+      { id: '1-1', time: 'Morning', title: 'Soda City Market', category: 'Market',
+        duration: '1-2 hrs', address: 'Main St (1300-1700 blocks), Columbia, SC 29201',
+        hours: 'Saturdays only · 9:00 AM - 1:00 PM',
+        short: "Columbia's Saturday street market — catch it before settling in.",
+        image: 'images/stop-1-1.jpg',
+        tentative: true, tentativeNote: 'Saturday mornings only — works best if you arrive early',
+        why: "Every Saturday morning several blocks of Main Street close to traffic and fill with an open-air market inspired by the great European street markets — roughly 200 vendors a week. Local farmers, prepared-food stalls, makers and artists line the pavement, all within strolling distance of downtown. It's the market credited with cementing Columbia's affectionate nickname, \"Soda City.\"",
+        facts: [
+          "Founded in 2005 with just 6 vendors and about 200 customers; today it averages around 200 vendors a week.",
+          "The \"Soda City\" name comes from Columbia's \"Cola\" abbreviation — the market helped make the nickname stick.",
+          "It runs every Saturday, year-round, rain or shine, along the 1300-1700 blocks of Main Street.",
+        ] },
+      { id: '1-2', time: 'Afternoon', title: 'Pool Time', category: 'Leisure',
+        short: "Settle in at the Port of Call and cool off by the pool.",
+        image: 'images/stop-1-2.jpg',
+        why: "Drop the bags, change into swimsuits, and let the vacation officially begin. The afternoon at the Port of Call is for easing into vacation mode — float, splash, and let the kids burn off the energy from the drive in." },
+      { id: '1-3', time: 'Evening', title: 'Bowling at The Grand on Main', category: 'Bowling',
+        address: '1621 Main St, Columbia, SC 29201', phone: '(803) 766-0151',
+        hours: 'Sat 10:00 AM - 2:00 AM',
+        short: "Seven boutique lanes inside a restored downtown theater.",
+        image: 'images/stop-1-3.jpg',
+        why: "A boutique bowling-and-dining spot tucked inside an early-1900s downtown building that once housed a popular theater, with original architectural touches still on display. Just seven lanes make it an intimate, stylish alternative to a big-box alley — pair a game with dinner and, for the grown-ups, a peek at the lower-level Urban Tiki bar.",
+        facts: [
+          "Only 7 boutique lanes — cozy rather than cavernous.",
+          "The building was once home to a popular downtown theater; some original features remain.",
+          "Downstairs hides a Polynesian-themed tiki bar called Urban Tiki.",
+        ] },
+    ],
+  },
+  {
+    id: 2, date: 'Sun, Jul 26', fullDate: 'Sunday, July 26, 2026',
+    city: 'A Day Ashore', subtitle: 'Church, a picnic at Sesqui, and family game night',
+    hero: 'images/day-2-hero.jpg',
+    lodging: 'Port of Call · 105 Spring Lawn Road',
+    stops: [
+      { id: '2-1', time: 'Morning', title: 'Church of Choice', category: 'Worship',
+        short: "Each family picks the service they'd like to attend.",
+        image: 'images/stop-2-1.jpg',
+        why: "A slow, easy Sunday morning. There's no set congregation on the agenda — each family is free to pick the church and service that suits them, then regroup for the afternoon picnic." },
+      { id: '2-2', time: 'Afternoon', title: 'Picnic at Sesqui Park', category: 'Picnic',
+        duration: '2-3 hrs',
+        address: '9564 Two Notch Rd, Columbia, SC 29223', phone: '(803) 788-2706',
+        hours: 'Grounds 8:00 AM - sunset',
+        short: "Lunch outdoors at Sesquicentennial State Park after church.",
+        image: 'images/stop-2-2.jpg',
+        why: "Sesquicentennial — \"Sesqui\" to locals — is a 1,419-acre pocket of pine forest just off Two Notch Road, built around a 30-acre lake with shaded picnic shelters. Spread out the picnic lunch, rent a kayak on the lake, and let the kids loose on the trails. On a hot July afternoon, the splash pad is a genuine cool-down.",
+        facts: [
+          "The park is named for Columbia's sesquicentennial (150th anniversary), marked in 1936; it opened the next year.",
+          "It was built by the Civilian Conservation Corps — the stone entrance and waterfall-like spillway are theirs.",
+          "Its splash pad, with 26 sprayers, is the only one in the entire South Carolina State Park System.",
+        ] },
+      { id: '2-3', time: 'Evening', title: 'Shawarma Chicken Dinner', category: 'Dinner',
+        short: "Supper back at the Port of Call — shawarma chicken on the menu.",
+        image: 'images/stop-2-3.jpg',
+        why: "Back at the Port of Call for a homemade supper — shawarma chicken, warm and spiced, served family-style. An easy, flavorful end to a restful Sunday before the games come out." },
+      { id: '2-4', time: 'Evening', title: 'Family Games', category: 'Family',
+        short: "Game night for all four families.",
+        image: 'images/stop-2-4.jpg',
+        why: "After dinner, clear the table and bring out the games. A relaxed evening of friendly competition for all four families — cards, board games, and whatever good-natured trash talk follows." },
+    ],
+  },
+  {
+    id: 3, date: 'Mon, Jul 27', fullDate: 'Monday, July 27, 2026',
+    city: 'Full Speed Ahead', subtitle: 'A day at Carowinds, then a backyard BBQ',
+    hero: 'images/day-3-hero.jpg',
+    lodging: 'Port of Call · 105 Spring Lawn Road',
+    stops: [
+      { id: '3-1', time: 'All Day', title: 'Carowinds', category: 'Theme Park',
+        duration: 'Full day',
+        address: '14523 Carowinds Blvd, Charlotte, NC 28273', phone: '(704) 588-2600',
+        hours: 'Summer: gates ~10:00 AM (closing varies)',
+        tentative: true, tentativeNote: 'Monday or Tuesday — pick your day',
+        short: "The Southeast's big thrill park — a day trip up I-77.",
+        image: 'images/stop-3-1.jpg',
+        why: "Straddling the North/South Carolina line, Carowinds is the Southeast's premier thrill park and an easy day-trip from Columbia. The headliner is Fury 325 — a giga coaster that climbs 325 feet before a 95 mph plunge that actually crosses the state border mid-ride. A full water park, Carolina Harbor, is included, so it's a genuine all-day outing with somewhere to cool off in the July heat.",
+        facts: [
+          "Fury 325 opened in 2015 as the world's tallest giga coaster (325 ft) and still hits 95 mph.",
+          "It's been repeatedly voted the world's best steel coaster at the Golden Ticket Awards.",
+          "The park sits right on the NC/SC state line — several rides cross between the two states.",
+        ] },
+      { id: '3-2', time: 'Evening', title: 'Backyard BBQ', category: 'Dinner',
+        short: "Fire up the grill back at the Port of Call.",
+        image: 'images/stop-3-2.jpg',
+        why: "Whether or not Carowinds lands today, the evening is for a backyard BBQ at the Port of Call — ribs on the grill, sides on the table, and everyone together after a big day." },
+    ],
+  },
+  {
+    id: 4, date: 'Tue, Jul 28', fullDate: 'Tuesday, July 28, 2026',
+    city: 'Open Waters', subtitle: 'A flex day — downtime, or the Carowinds backup',
+    hero: 'images/day-4-hero.jpg',
+    lodging: 'Port of Call · 105 Spring Lawn Road',
+    stops: [
+      { id: '4-1', time: 'All Day', title: 'Open Day at the Port of Call', category: 'Free Time',
+        short: "Nothing scheduled — rest, pool, or use it as the Carowinds day.",
+        image: 'images/stop-4-1.jpg',
+        why: "A deliberate breather in the middle of the week. Sleep in, linger by the pool, explore Columbia at your own pace — or, if you saved Carowinds for today, this is the day to make the run up I-77. However you spend it, there's nothing on the books." },
+    ],
+  },
+  {
+    id: 5, date: 'Wed, Jul 29', fullDate: 'Wednesday, July 29, 2026',
+    city: 'All Hands on Deck', subtitle: "Frankie's Fun Park, then a murder mystery dinner",
+    hero: 'images/day-5-hero.jpg',
+    lodging: 'Port of Call · 105 Spring Lawn Road',
+    stops: [
+      { id: '5-1', time: 'Afternoon', title: "Frankie's Fun Park", category: 'Fun Park',
+        duration: '2-3 hrs',
+        address: '140 Parkridge Dr, Columbia, SC 29212', phone: '(803) 781-2342',
+        hours: 'Sun-Fri 12:00 PM - midnight · Sat 10:00 AM - midnight',
+        tentative: true, tentativeNote: 'Wednesday or Thursday — swaps with SURGE',
+        short: "Go-karts, mini golf, laser tag and arcade on the west side.",
+        image: 'images/stop-5-1.jpg',
+        why: "Frankie's is Columbia's all-in-one fun hub — go-karts, mini golf, laser tag and an arcade in one spot. Three go-kart tracks are graded by skill, from a beginner Rookie Track to a 16-and-up Drifter Track, so a mixed-age group can each find their lane. There's no gate fee — you just pay for what you play.",
+        facts: [
+          "No admission fee — entry is free and you pay per attraction.",
+          "Three separate go-kart tracks tiered by ability, including a Drifter Track for ages 16+.",
+          "Mini golf spans three full 18-hole courses — 54 holes in all.",
+        ] },
+      { id: '5-2', time: 'Evening', title: 'Murder Mystery Dinner', category: 'Dinner',
+        short: "A whodunit dinner party back at the Port of Call.",
+        image: 'images/stop-5-2.jpg',
+        why: "The evening turns the Port of Call into a stage for a murder mystery dinner. Everyone takes a part, dinner is served in courses, and the clues unspool until someone fingers the culprit — equal parts dinner, theater, and family chaos." },
+    ],
+  },
+  {
+    id: 6, date: 'Thu, Jul 30', fullDate: 'Thursday, July 30, 2026',
+    city: 'Making Waves', subtitle: 'Bounce it out at SURGE Adventure Park',
+    hero: 'images/day-6-hero.jpg',
+    lodging: 'Port of Call · 105 Spring Lawn Road',
+    stops: [
+      { id: '6-1', time: 'Afternoon', title: 'SURGE Adventure Park', category: 'Trampoline',
+        duration: '1.5-2 hrs',
+        address: '230 Business Park Blvd, Columbia, SC 29203', phone: '(803) 400-6974',
+        hours: 'Tue-Thu 11:00 AM - 8:00 PM · CLOSED Mondays',
+        tentative: true, tentativeNote: "Wednesday or Thursday — swaps with Frankie's",
+        short: "Indoor trampolines, ropes course and climbing walls.",
+        image: 'images/stop-6-1.jpg',
+        why: "SURGE is Columbia's go-to indoor adventure park — wall-to-wall trampolines plus a ropes course, climbing walls and dodgeball courts under one roof. It's the perfect beat-the-heat (or beat-the-rain) afternoon, and a great way for a wide age range to burn energy in the same place. Grippy socks are required and sold on-site.",
+        facts: [
+          "Closed every Monday — a weekday or weekend visit is the move.",
+          "Toddlers age 2 and under jump free with a paying adult.",
+          "Special grippy \"SURGE\" socks are mandatory to jump (buy on-site if you forget).",
+        ] },
+      { id: '6-2', time: 'Evening', title: 'Open Evening', category: 'Free Time',
+        short: "No plans — an easy night back at the Port of Call.",
+        image: 'images/stop-6-2.jpg',
+        why: "An open evening to keep the week from feeling overscheduled. Order in, swim under the lights, or just put your feet up at the Port of Call before the last full day." },
+    ],
+  },
+  {
+    id: 7, date: 'Fri, Jul 31', fullDate: 'Friday, July 31, 2026',
+    city: 'Homeward Bound', subtitle: 'One last lunch, then we set sail for home',
+    hero: 'images/day-7-hero.jpg',
+    lodging: 'Port of Call · 105 Spring Lawn Road',
+    stops: [
+      { id: '7-1', time: 'Midday', title: 'Farewell Lunch', category: 'Lunch',
+        short: "A final meal together before everyone heads out.",
+        image: 'images/stop-7-1.jpg',
+        why: "The last gathering of the trip — a farewell lunch at the Port of Call. One more meal together, last hugs and group photos, before the families point their cars toward home." },
+      { id: '7-2', time: 'Afternoon', title: 'Set Sail for Home', category: 'Departure',
+        short: "Pack up and depart from the Port of Call.",
+        image: 'images/stop-7-2.jpg',
+        why: "Bags in the car, one last look around, and the voyage comes to a close. Safe travels home — until the next Port of Call." },
+    ],
+  },
+];
+
+// ─────────────────────────────────────────────────────────────
+// Meal ideas — general galley list shown on the home screen
+// ─────────────────────────────────────────────────────────────
+const MEAL_IDEAS = [
+  { name: 'Cookout & Ribs', note: 'Fire up the grill — ribs are the headliner' },
+  { name: 'Salad Bar', note: 'Build-your-own — a fresh option for hot days' },
+];
+
+// ─────────────────────────────────────────────────────────────
+// Activity filter — logistical stops don't count
+// ─────────────────────────────────────────────────────────────
+function isActivity(stop) {
+  if (!stop) return false;
+  if (stop.category === 'Departure') return false;
+  if (stop.category === 'Free Time') return false;
+  return true;
+}
+function countActivities(day) {
+  return day.stops.filter(isActivity).length;
+}
+const TOTAL_ACTIVITIES = DAYS.reduce((n, d) => n + countActivities(d), 0);
+
+// ─────────────────────────────────────────────────────────────
+// Shared primitives
+// ─────────────────────────────────────────────────────────────
+function Eyebrow({ children, color = VA.terracotta, style = {} }) {
+  return (
+    <div style={{
+      fontFamily: mono, fontSize: 10, fontWeight: 500,
+      letterSpacing: 2, textTransform: 'uppercase',
+      color, ...style,
+    }}>{children}</div>
+  );
+}
+function Rule({ color = VA.rule, margin = '16px 0' }) {
+  return <div style={{ height: 1, background: color, margin }} />;
+}
+function Tag({ children, bg = VA.forest, color = VA.paper }) {
+  return (
+    <span style={{
+      display: 'inline-block', padding: '3px 8px', borderRadius: 2,
+      fontFamily: mono, fontSize: 9, fontWeight: 500,
+      letterSpacing: 1.2, textTransform: 'uppercase',
+      background: bg, color,
+    }}>{children}</span>
+  );
+}
+function TopStatusSpacer() {
+  return <div style={{ height: 'max(env(safe-area-inset-top, 0px), 16px)' }} />;
+}
+
+// ─────────────────────────────────────────────────────────────
+// Tab bar
+// ─────────────────────────────────────────────────────────────
+function TabBar({ active, onTab }) {
+  const tabs = [
+    { id: 'home', label: 'Trip', icon: 'home' },
+    { id: 'itinerary', label: 'Days', icon: 'days' },
+    { id: 'activities', label: 'Activities', icon: 'activities' },
+    { id: 'map', label: 'Map', icon: 'map' },
+  ];
+  const Icon = ({ name, active }) => {
+    const c = active ? VA.ink : VA.inkMuted;
+    const s = 22;
+    if (name === 'home') return (
+      <svg width={s} height={s} viewBox="0 0 24 24" fill="none">
+        <path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1v-9.5z" stroke={c} strokeWidth={active ? 2 : 1.5} strokeLinejoin="round"/>
+      </svg>
+    );
+    if (name === 'days') return (
+      <svg width={s} height={s} viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="5" width="18" height="16" rx="2" stroke={c} strokeWidth={active ? 2 : 1.5}/>
+        <path d="M3 10h18M8 3v4M16 3v4" stroke={c} strokeWidth={active ? 2 : 1.5} strokeLinecap="round"/>
+      </svg>
+    );
+    if (name === 'activities') return (
+      <svg width={s} height={s} viewBox="0 0 24 24" fill="none">
+        <path d="M9 6h11M9 12h11M9 18h11" stroke={c} strokeWidth={active ? 2 : 1.5} strokeLinecap="round"/>
+        <circle cx="4.5" cy="6" r="1.5" fill={c}/>
+        <circle cx="4.5" cy="12" r="1.5" fill={c}/>
+        <circle cx="4.5" cy="18" r="1.5" fill={c}/>
+      </svg>
+    );
+    if (name === 'map') return (
+      <svg width={s} height={s} viewBox="0 0 24 24" fill="none">
+        <path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke={c} strokeWidth={active ? 2 : 1.5} strokeLinejoin="round"/>
+        <circle cx="12" cy="10" r="2.5" stroke={c} strokeWidth={active ? 2 : 1.5}/>
+      </svg>
+    );
+  };
+  return (
+    <div style={{
+      paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 12px)',
+      paddingTop: 10,
+      background: 'rgba(251, 248, 241, 0.92)',
+      backdropFilter: 'blur(14px) saturate(180%)',
+      WebkitBackdropFilter: 'blur(14px) saturate(180%)',
+      borderTop: `1px solid ${VA.rule}`,
+      display: 'flex', justifyContent: 'space-around',
+    }}>
+      {tabs.map(t => (
+        <button key={t.id} onClick={() => onTab(t.id)} style={{
+          background: 'none', border: 0, padding: '4px 16px', cursor: 'pointer',
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3,
+        }}>
+          <Icon name={t.icon} active={active === t.id} />
+          <span style={{
+            fontFamily: mono, fontSize: 9, letterSpacing: 1.3,
+            textTransform: 'uppercase', fontWeight: 500,
+            color: active === t.id ? VA.ink : VA.inkMuted,
+          }}>{t.label}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Home screen
+// ─────────────────────────────────────────────────────────────
+function getTripDay() {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const start = new Date(2026, 6, 25); // July 25, 2026 (month is 0-indexed)
+  const diffDays = Math.round((today - start) / (24 * 60 * 60 * 1000));
+  if (diffDays < 0) return { day: 1, phase: 'before', daysUntil: -diffDays };
+  if (diffDays > 6) return { day: 7, phase: 'after' };
+  return { day: diffDays + 1, phase: 'during' };
+}
+
+function HomeScreen({ onDay, onTab }) {
+  const { day: today, phase, daysUntil } = getTripDay();
+  const todayLabel =
+    phase === 'before' ? `Sets sail in ${daysUntil} day${daysUntil === 1 ? '' : 's'}` :
+    phase === 'after'  ? 'Voyage complete' :
+    'Today';
+  return (
+    <div style={{ background: VA.paper, minHeight: '100%', paddingBottom: 100 }}>
+      <div style={{
+        position: 'relative', height: 420,
+        backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.75) 100%), url(${TRIP_META.heroImage})`,
+        backgroundSize: 'cover', backgroundPosition: 'center',
+      }}>
+        <TopStatusSpacer />
+        <div style={{ padding: '20px 24px' }}>
+          <Eyebrow color="rgba(255,255,255,0.85)">Columbia, South Carolina</Eyebrow>
+        </div>
+        <div style={{ position: 'absolute', bottom: 28, left: 24, right: 24, color: VA.paper }}>
+          <div style={{
+            fontFamily: serif, fontSize: 54, fontWeight: 700, lineHeight: 0.92,
+            letterSpacing: -1, textShadow: '0 2px 20px rgba(0,0,0,0.4)',
+          }}>{TRIP_META.title}</div>
+          {TRIP_META.subtitle && <div style={{
+            fontFamily: serif, fontStyle: 'italic', fontSize: 22, marginTop: 8,
+            fontWeight: 400, opacity: 0.95,
+          }}>{TRIP_META.subtitle}</div>}
+          <div style={{
+            marginTop: 18, display: 'flex', alignItems: 'center', gap: 12,
+            fontFamily: mono, fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase',
+          }}>
+            <span>Jul 25</span>
+            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.5)' }} />
+            <span>Jul 31, 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ padding: '24px' }}>
+        <Eyebrow>Day {today} of {TRIP_META.totalDays} · {todayLabel}</Eyebrow>
+        <div style={{ marginTop: 8, display: 'flex', gap: 16, alignItems: 'baseline', justifyContent: 'space-between' }}>
+          <h2 style={{
+            fontFamily: serif, fontSize: 32, fontWeight: 600, lineHeight: 1.05,
+            color: VA.ink, margin: 0, letterSpacing: -0.5,
+          }}>{DAYS[today-1].city}</h2>
+          <span style={{ fontFamily: mono, fontSize: 11, color: VA.inkMuted, letterSpacing: 1 }}>
+            {DAYS[today-1].date}
+          </span>
+        </div>
+        <p style={{
+          fontFamily: serif, fontStyle: 'italic', fontSize: 18, color: VA.inkSoft,
+          marginTop: 6, lineHeight: 1.35,
+        }}>{DAYS[today-1].subtitle}</p>
+
+        <button onClick={() => onDay(today)} style={{
+          marginTop: 18, width: '100%', padding: '16px',
+          background: VA.forest, color: VA.paper, border: 0,
+          borderRadius: 0, cursor: 'pointer',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          fontFamily: mono, fontSize: 11, letterSpacing: 2, textTransform: 'uppercase',
+          fontWeight: 500,
+        }}>
+          <span>{phase === 'during' ? "Today's Schedule" : `Day ${today} Schedule`} · {countActivities(DAYS[today-1])} activities</span>
+          <span>→</span>
+        </button>
+      </div>
+
+      <Rule margin="0 24px" />
+
+      <div style={{ padding: '24px' }}>
+        <Eyebrow>The Voyage</Eyebrow>
+        <h3 style={{
+          fontFamily: serif, fontSize: 26, fontWeight: 600, lineHeight: 1.1,
+          color: VA.ink, margin: '8px 0 20px', letterSpacing: -0.3,
+        }}>Seven days, one home port, four families</h3>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+          {DAYS.map((d, i, arr) => (
+            <button key={d.id} onClick={() => onDay(d.id)} style={{
+              background: 'none', border: 0, padding: '16px 0', cursor: 'pointer',
+              textAlign: 'left', width: '100%',
+              borderBottom: i < arr.length - 1 ? `1px solid ${VA.rule}` : 'none',
+              display: 'grid', gridTemplateColumns: '38px 1fr auto', alignItems: 'center', gap: 12,
+            }}>
+              <span style={{
+                fontFamily: mono, fontSize: 10, color: VA.inkMuted, letterSpacing: 1.2,
+              }}>{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <div style={{
+                  fontFamily: serif, fontSize: 22, fontWeight: 600, color: VA.ink,
+                  letterSpacing: -0.2,
+                }}>{d.city}</div>
+                <div style={{
+                  fontFamily: sans, fontSize: 13, color: VA.inkSoft, marginTop: 2,
+                }}>{d.subtitle}</div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontFamily: mono, fontSize: 10, color: VA.inkMuted, letterSpacing: 1 }}>
+                  {d.date.split(',')[0].toUpperCase()}
+                </div>
+                <div style={{ marginTop: 2, color: VA.ink, fontSize: 14 }}>→</div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <Rule margin="0 24px" />
+
+      <div style={{ padding: '24px' }}>
+        <Eyebrow>The Galley</Eyebrow>
+        <h3 style={{
+          fontFamily: serif, fontSize: 26, fontWeight: 600, lineHeight: 1.1,
+          color: VA.ink, margin: '8px 0 6px', letterSpacing: -0.3,
+        }}>Meal ideas</h3>
+        <p style={{
+          fontFamily: sans, fontSize: 13, color: VA.inkSoft, margin: '0 0 16px', lineHeight: 1.4,
+        }}>A couple of crowd-pleasers to work in whenever the week needs a meal — not tied to any one day.</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+          {MEAL_IDEAS.map((m, i, arr) => (
+            <div key={m.name} style={{
+              padding: '14px 0',
+              borderBottom: i < arr.length - 1 ? `1px solid ${VA.rule}` : 'none',
+              display: 'grid', gridTemplateColumns: '24px 1fr', alignItems: 'baseline', gap: 12,
+            }}>
+              <span style={{ color: VA.terracotta, fontSize: 16, lineHeight: 1 }}>✦</span>
+              <div>
+                <div style={{ fontFamily: serif, fontSize: 19, fontWeight: 600, color: VA.ink }}>{m.name}</div>
+                <div style={{ fontFamily: sans, fontSize: 13, color: VA.inkSoft, marginTop: 2 }}>{m.note}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <Rule margin="0 24px" />
+
+      <div style={{
+        padding: '28px 24px', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr',
+        gap: 0, textAlign: 'center',
+      }}>
+        {[
+          { n: String(TRIP_META.totalDays), l: 'Days' },
+          { n: String(TOTAL_ACTIVITIES), l: 'Activities' },
+          { n: '4', l: 'Families' },
+        ].map((s, i) => (
+          <div key={i} style={{
+            borderRight: i < 2 ? `1px solid ${VA.rule}` : 'none', padding: '0 8px',
+          }}>
+            <div style={{ fontFamily: serif, fontSize: 40, fontWeight: 600, color: VA.forest, lineHeight: 1 }}>
+              {s.n}
+            </div>
+            <div style={{
+              fontFamily: mono, fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase',
+              color: VA.inkMuted, marginTop: 6,
+            }}>{s.l}</div>
+          </div>
+        ))}
+      </div>
+
+      <Rule margin="0 24px" />
+
+      <div style={{ padding: '32px 24px 24px', textAlign: 'center' }}>
+        <div style={{ fontFamily: serif, fontSize: 40, color: VA.terracotta, lineHeight: 0.3 }}>“</div>
+        <p style={{
+          fontFamily: serif, fontStyle: 'italic', fontSize: 19, lineHeight: 1.4,
+          color: VA.inkSoft, margin: '8px 0 0', fontWeight: 400,
+        }}>
+          I am not afraid of storms, for I am learning how to sail my ship.
+        </p>
+        <div style={{
+          fontFamily: mono, fontSize: 10, letterSpacing: 2, color: VA.inkMuted,
+          marginTop: 16, textTransform: 'uppercase',
+        }}>— Louisa May Alcott</div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Itinerary screen
+// ─────────────────────────────────────────────────────────────
+function ItineraryScreen({ onDay }) {
+  return (
+    <div style={{ background: VA.paper, minHeight: '100%', paddingBottom: 100 }}>
+      <TopStatusSpacer />
+      <div style={{ padding: '12px 24px 20px' }}>
+        <Eyebrow>The Itinerary</Eyebrow>
+        <h1 style={{
+          fontFamily: serif, fontSize: 44, fontWeight: 700, lineHeight: 0.95,
+          margin: '10px 0 0', letterSpacing: -1, color: VA.ink,
+        }}>All Seven<br/>Days</h1>
+      </div>
+
+      <div>
+        {DAYS.map((d, i) => (
+          <button key={d.id} onClick={() => onDay(d.id)} style={{
+            display: 'block', width: '100%', padding: 0, margin: 0,
+            border: 0, background: 'none', cursor: 'pointer', textAlign: 'left',
+            borderTop: `1px solid ${VA.rule}`,
+            borderBottom: i === DAYS.length - 1 ? `1px solid ${VA.rule}` : 'none',
+          }}>
+            <div style={{ display: 'flex', gap: 14, padding: '18px 24px', alignItems: 'stretch' }}>
+              <div style={{
+                width: 86, height: 86, flexShrink: 0, overflow: 'hidden',
+                backgroundImage: `url(${d.hero})`, backgroundSize: 'cover', backgroundPosition: 'center',
+              }} />
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{
+                  fontFamily: serif, fontSize: 28, fontWeight: 700, color: VA.ink,
+                  lineHeight: 1, letterSpacing: -0.6,
+                }}>Day {d.id}</div>
+                <div style={{
+                  fontFamily: mono, fontSize: 10, color: VA.terracotta,
+                  letterSpacing: 1.5, fontWeight: 500, marginTop: 5,
+                }}>{d.date.toUpperCase()}</div>
+                <div style={{
+                  fontFamily: serif, fontStyle: 'italic', fontSize: 14, color: VA.inkSoft,
+                  marginTop: 5, lineHeight: 1.25,
+                }}>{d.subtitle}</div>
+                <div style={{
+                  fontFamily: mono, fontSize: 9, color: VA.inkMuted,
+                  letterSpacing: 1.3, textTransform: 'uppercase', marginTop: 3,
+                }}>{d.city}</div>
+              </div>
+              <div style={{
+                fontFamily: serif, fontSize: 22, color: VA.ink, alignSelf: 'center',
+              }}>→</div>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Day screen
+// ─────────────────────────────────────────────────────────────
+function DayScreen({ dayId, onDay, onStop, onBack }) {
+  const idx = DAYS.findIndex(d => d.id === dayId);
+  const day = DAYS[idx];
+  const prev = DAYS[idx - 1];
+  const next = DAYS[idx + 1];
+
+  const [touchStart, setTouchStart] = useState(null);
+  const [dragX, setDragX] = useState(0);
+
+  const onTouchStart = (e) => setTouchStart(e.touches[0].clientX);
+  const onTouchMove = (e) => {
+    if (touchStart === null) return;
+    setDragX(e.touches[0].clientX - touchStart);
+  };
+  const onTouchEnd = () => {
+    if (dragX < -60 && next) onDay(next.id);
+    else if (dragX > 60 && prev) onDay(prev.id);
+    setTouchStart(null);
+    setDragX(0);
+  };
+
+  return (
+    <div style={{ background: VA.paper, minHeight: '100%', paddingBottom: 100 }}
+         onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+      <div style={{
+        position: 'relative', height: 320,
+        backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.7) 100%), url(${day.hero})`,
+        backgroundSize: 'cover', backgroundPosition: 'center',
+        transform: `translateX(${dragX * 0.3}px)`,
+        transition: touchStart === null ? 'transform 0.3s ease' : 'none',
+      }}>
+        <TopStatusSpacer />
+        <div style={{ padding: '8px 20px', display: 'flex', justifyContent: 'space-between' }}>
+          <button onClick={onBack} style={{
+            border: 0, background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)',
+            color: VA.paper, fontFamily: mono, fontSize: 10, letterSpacing: 1.5,
+            textTransform: 'uppercase', padding: '8px 12px', cursor: 'pointer',
+          }}>← All Days</button>
+          <div style={{
+            background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)',
+            color: VA.paper, fontFamily: mono, fontSize: 10, letterSpacing: 1.5,
+            padding: '8px 12px',
+          }}>{String(day.id).padStart(2, '0')} / {TRIP_META.totalDays}</div>
+        </div>
+        <div style={{ position: 'absolute', bottom: 24, left: 24, right: 24, color: VA.paper }}>
+          <div style={{
+            fontFamily: serif, fontSize: 72, fontWeight: 700, lineHeight: 0.9,
+            letterSpacing: -2.2, textShadow: '0 2px 20px rgba(0,0,0,0.35)',
+          }}>Day {day.id}</div>
+          <div style={{
+            fontFamily: mono, fontSize: 11, letterSpacing: 2, textTransform: 'uppercase',
+            marginTop: 10, opacity: 0.9,
+          }}>{day.fullDate}</div>
+          <div style={{
+            fontFamily: serif, fontSize: 28, fontWeight: 600, lineHeight: 1.05,
+            marginTop: 8, letterSpacing: -0.5,
+          }}>{day.city}</div>
+          <div style={{
+            fontFamily: serif, fontStyle: 'italic', fontSize: 16, marginTop: 4, opacity: 0.95,
+          }}>{day.subtitle}</div>
+        </div>
+      </div>
+
+      <div style={{
+        padding: '14px 24px', display: 'flex', justifyContent: 'space-between',
+        alignItems: 'center', borderBottom: `1px solid ${VA.rule}`,
+      }}>
+        <button onClick={() => prev && onDay(prev.id)} disabled={!prev} style={{
+          background: 'none', border: 0, cursor: prev ? 'pointer' : 'default',
+          fontFamily: mono, fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase',
+          color: prev ? VA.inkSoft : VA.rule, padding: 0,
+        }}>{prev ? `← Day ${prev.id}` : '—'}</button>
+        <button onClick={() => next && onDay(next.id)} disabled={!next} style={{
+          background: 'none', border: 0, cursor: next ? 'pointer' : 'default',
+          fontFamily: mono, fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase',
+          color: next ? VA.inkSoft : VA.rule, padding: 0,
+        }}>{next ? `Day ${next.id} →` : '—'}</button>
+      </div>
+
+      <div style={{
+        padding: '14px 24px', background: VA.cream, display: 'flex', gap: 10, alignItems: 'center',
+      }}>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M3 21V7l9-4 9 4v14M9 9h6M9 13h6M9 17h6" stroke={VA.forest} strokeWidth="1.5" strokeLinecap="round"/>
+        </svg>
+        <div>
+          <div style={{ fontFamily: mono, fontSize: 9, color: VA.inkMuted, letterSpacing: 1.3, textTransform: 'uppercase' }}>
+            Home Port
+          </div>
+          <div style={{ fontFamily: sans, fontSize: 13, color: VA.ink, marginTop: 1 }}>
+            {day.lodging}
+          </div>
+        </div>
+      </div>
+
+      <div style={{ padding: '28px 24px 0' }}>
+        <Eyebrow>The Schedule</Eyebrow>
+        <h2 style={{
+          fontFamily: serif, fontSize: 26, fontWeight: 600, letterSpacing: -0.3,
+          margin: '6px 0 20px', color: VA.ink,
+        }}>{countActivities(day)} activities today</h2>
+      </div>
+
+      <div style={{ padding: '0 24px' }}>
+        {day.stops.map((s, i) => (
+          <StopRow key={s.id} stop={s} last={i === day.stops.length - 1} onClick={() => onStop(s.id, day.id)} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function StopRow({ stop, last, onClick }) {
+  return (
+    <button onClick={onClick} style={{
+      display: 'grid', gridTemplateColumns: '78px 1fr', gap: 14,
+      width: '100%', padding: '0 0 20px', border: 0, background: 'none',
+      cursor: 'pointer', textAlign: 'left',
+    }}>
+      <div style={{ position: 'relative', paddingTop: 4 }}>
+        <div style={{
+          fontFamily: mono, fontSize: 13, fontWeight: 600, color: VA.ink, letterSpacing: 0.5,
+        }}>{stop.time}</div>
+        <div style={{
+          position: 'absolute', right: -8, top: 10,
+          width: 9, height: 9, borderRadius: '50%', background: VA.terracotta,
+          border: `2px solid ${VA.paper}`, boxShadow: `0 0 0 1px ${VA.terracotta}`,
+        }} />
+        {!last && <div style={{
+          position: 'absolute', right: -4, top: 22, bottom: -20, width: 1,
+          background: VA.rule,
+        }} />}
+      </div>
+      <div style={{
+        borderLeft: `1px solid ${VA.rule}`, paddingLeft: 16, paddingBottom: last ? 8 : 0,
+      }}>
+        <div style={{ marginBottom: 8, display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+          <Tag bg={VA.forest}>{stop.category}</Tag>
+          {stop.tentative && <Tag bg={VA.terracotta}>Either / Or</Tag>}
+        </div>
+        <div style={{
+          fontFamily: serif, fontSize: 20, fontWeight: 600, color: VA.ink,
+          letterSpacing: -0.2, lineHeight: 1.15,
+        }}>{stop.title}</div>
+        {(stop.short || stop.why) && (
+          <p style={{
+            fontFamily: sans, fontSize: 13, color: VA.inkSoft, lineHeight: 1.45,
+            margin: '6px 0 0',
+          }}>
+            {stop.short || stop.why.slice(0, 110) + (stop.why.length > 110 ? '…' : '')}
+          </p>
+        )}
+        <div style={{
+          marginTop: 10, display: 'flex', gap: 14, alignItems: 'center',
+          fontFamily: mono, fontSize: 10, color: VA.inkMuted, letterSpacing: 1,
+        }}>
+          {stop.duration && <span>⏱ {stop.duration}</span>}
+          {stop.cost && <span>{stop.cost}</span>}
+          <span style={{ marginLeft: 'auto', color: VA.ink }}>Read →</span>
+        </div>
+      </div>
+    </button>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Stop detail screen
+// ─────────────────────────────────────────────────────────────
+function StopDetailScreen({ stopId, dayId, onBack }) {
+  const day = DAYS.find(d => d.id === dayId);
+  const stop = day.stops.find(s => s.id === stopId);
+  const stopIdx = day.stops.findIndex(s => s.id === stopId);
+  const prevStop = day.stops[stopIdx - 1];
+  const nextStop = day.stops[stopIdx + 1];
+
+  return (
+    <div style={{ background: VA.paper, minHeight: '100%', paddingBottom: 100 }}>
+      <div style={{
+        position: 'relative', height: 460,
+        backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.6) 100%), url(${stop.image})`,
+        backgroundSize: 'cover', backgroundPosition: 'center',
+      }}>
+        <TopStatusSpacer />
+        <div style={{ padding: '8px 20px', display: 'flex', justifyContent: 'space-between' }}>
+          <button onClick={() => onBack()} style={{
+            border: 0, background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)',
+            color: VA.paper, fontFamily: mono, fontSize: 10, letterSpacing: 1.5,
+            textTransform: 'uppercase', padding: '8px 12px', cursor: 'pointer',
+          }}>← {day.city}</button>
+        </div>
+        <div style={{ position: 'absolute', bottom: 28, left: 24, right: 24, color: VA.paper }}>
+          <div style={{ marginBottom: 12 }}>
+            <span style={{
+              display: 'inline-block', padding: '4px 10px', background: VA.terracotta,
+              fontFamily: mono, fontSize: 9, letterSpacing: 1.5, textTransform: 'uppercase',
+              fontWeight: 500,
+            }}>{stop.category}</span>
+          </div>
+          <div style={{
+            fontFamily: serif, fontSize: 48, fontWeight: 700, lineHeight: 0.98,
+            letterSpacing: -1.2, textShadow: '0 2px 20px rgba(0,0,0,0.3)',
+          }}>{stop.title}</div>
+          <div style={{
+            marginTop: 14, display: 'flex', gap: 16, alignItems: 'center',
+            fontFamily: mono, fontSize: 10, letterSpacing: 1.4, textTransform: 'uppercase',
+            opacity: 0.95,
+          }}>
+            <span>Activity {stopIdx + 1} of {day.stops.length}</span>
+            <span>·</span>
+            <span>{stop.time}</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: stop.cost && stop.duration ? '1fr 1fr 1fr' : '1fr 1fr',
+        borderBottom: `1px solid ${VA.rule}`,
+      }}>
+        <MetaCell label="Time" value={stop.time} />
+        {stop.duration && <MetaCell label="Duration" value={stop.duration} />}
+        {stop.cost && <MetaCell label="Cost" value={stop.cost} />}
+      </div>
+
+      {stop.tentative && stop.tentativeNote && (
+        <div style={{
+          background: VA.terracotta, color: VA.paper, padding: '14px 24px',
+          display: 'flex', gap: 12, alignItems: 'baseline',
+        }}>
+          <span style={{
+            fontFamily: mono, fontSize: 9, letterSpacing: 1.5, textTransform: 'uppercase',
+            fontWeight: 600, whiteSpace: 'nowrap',
+          }}>Either / Or</span>
+          <span style={{ fontFamily: sans, fontSize: 13, lineHeight: 1.4 }}>{stop.tentativeNote}</span>
+        </div>
+      )}
+
+      <div style={{ padding: '32px 24px 8px' }}>
+        <Eyebrow>Why It Matters</Eyebrow>
+        <h2 style={{
+          fontFamily: serif, fontSize: 28, fontWeight: 600, lineHeight: 1.1,
+          letterSpacing: -0.4, margin: '10px 0 20px', color: VA.ink,
+        }}>The story behind the stop</h2>
+
+        <div style={{
+          fontFamily: serif, fontSize: 17, lineHeight: 1.55, color: VA.ink,
+        }}>
+          <span style={{
+            fontFamily: serif, fontSize: 64, fontWeight: 700, float: 'left',
+            lineHeight: 0.85, paddingRight: 10, paddingTop: 6, color: VA.terracotta,
+          }}>{stop.why.charAt(0)}</span>
+          {stop.why.slice(1)}
+        </div>
+      </div>
+
+      {stop.facts && stop.facts.length > 0 && (
+        <>
+          <div style={{ padding: '32px 24px 0' }}>
+            <Rule />
+          </div>
+          <div style={{ padding: '20px 24px 0' }}>
+            <Eyebrow color={VA.forest}>Did You Know</Eyebrow>
+            <h3 style={{
+              fontFamily: serif, fontSize: 22, fontWeight: 600, lineHeight: 1.15,
+              margin: '8px 0 18px', color: VA.ink, letterSpacing: -0.2,
+            }}>Things worth knowing</h3>
+            {stop.facts.map((f, i) => (
+              <div key={i} style={{
+                display: 'grid', gridTemplateColumns: '28px 1fr', gap: 8,
+                padding: '14px 0',
+                borderTop: i === 0 ? `1px solid ${VA.rule}` : 'none',
+                borderBottom: `1px solid ${VA.rule}`,
+              }}>
+                <div style={{
+                  fontFamily: serif, fontSize: 22, fontWeight: 600, color: VA.terracotta,
+                  lineHeight: 1, letterSpacing: -0.5,
+                }}>{String(i + 1).padStart(2, '0')}</div>
+                <div style={{
+                  fontFamily: serif, fontSize: 16, lineHeight: 1.45, color: VA.inkSoft,
+                }}>{f}</div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {(stop.address || stop.phone || stop.hours) && (
+        <div style={{ padding: '28px 24px 0' }}>
+          <Eyebrow color={VA.forest}>Practical</Eyebrow>
+          <h3 style={{
+            fontFamily: serif, fontSize: 22, fontWeight: 600, lineHeight: 1.15,
+            margin: '8px 0 14px', color: VA.ink, letterSpacing: -0.2,
+          }}>Getting there</h3>
+          <div style={{
+            background: VA.cream, padding: '18px 18px',
+          }}>
+            {stop.address && <InfoRow label="Address" value={stop.address} />}
+            {stop.hours && <InfoRow label="Hours" value={stop.hours} />}
+            {stop.phone && <InfoRow label="Phone" value={stop.phone} />}
+          </div>
+          <button onClick={() => {
+            const query = stop.mapQuery
+              ? stop.mapQuery
+              : stop.address
+              ? `${stop.title}, ${stop.address}`
+              : `${stop.title}, Columbia, SC`;
+            window.open(
+              `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`,
+              '_blank', 'noopener,noreferrer'
+            );
+          }} style={{
+            marginTop: 16, width: '100%', padding: '14px',
+            background: VA.ink, color: VA.paper, border: 0,
+            cursor: 'pointer', fontFamily: mono, fontSize: 10,
+            letterSpacing: 2, textTransform: 'uppercase', fontWeight: 500,
+          }}>Open in Maps ↗</button>
+        </div>
+      )}
+
+      <div style={{ padding: '36px 24px 24px' }}>
+        <Rule />
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          paddingTop: 18, gap: 12,
+        }}>
+          <StopNav dir="prev" stop={prevStop} onClick={() => prevStop && onBack(prevStop.id)} />
+          <StopNav dir="next" stop={nextStop} onClick={() => nextStop && onBack(nextStop.id)} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MetaCell({ label, value }) {
+  return (
+    <div style={{
+      padding: '16px 12px', textAlign: 'center',
+      borderRight: `1px solid ${VA.rule}`,
+    }}>
+      <div style={{
+        fontFamily: mono, fontSize: 9, color: VA.inkMuted, letterSpacing: 1.3,
+        textTransform: 'uppercase', marginBottom: 4,
+      }}>{label}</div>
+      <div style={{
+        fontFamily: serif, fontSize: 16, fontWeight: 600, color: VA.ink,
+      }}>{value}</div>
+    </div>
+  );
+}
+
+function InfoRow({ label, value }) {
+  return (
+    <div style={{
+      display: 'grid', gridTemplateColumns: '80px 1fr', gap: 10,
+      padding: '8px 0', borderBottom: `1px solid ${VA.rule}`,
+    }}>
+      <div style={{
+        fontFamily: mono, fontSize: 9, color: VA.inkMuted, letterSpacing: 1.3,
+        textTransform: 'uppercase', paddingTop: 3,
+      }}>{label}</div>
+      <div style={{ fontFamily: sans, fontSize: 13, color: VA.ink, lineHeight: 1.4 }}>
+        {value}
+      </div>
+    </div>
+  );
+}
+
+function StopNav({ dir, stop, onClick }) {
+  if (!stop) return <div style={{ flex: 1 }} />;
+  return (
+    <button onClick={onClick} style={{
+      flex: 1, background: 'none', border: 0, cursor: 'pointer', padding: 0,
+      textAlign: dir === 'prev' ? 'left' : 'right',
+    }}>
+      <div style={{
+        fontFamily: mono, fontSize: 9, color: VA.inkMuted, letterSpacing: 1.3,
+        textTransform: 'uppercase',
+      }}>{dir === 'prev' ? '← Previous' : 'Next →'}</div>
+      <div style={{
+        fontFamily: serif, fontSize: 17, fontWeight: 600, color: VA.ink,
+        marginTop: 4, letterSpacing: -0.1, lineHeight: 1.15,
+      }}>{stop.title}</div>
+    </button>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Activities screen — all real activities across the trip
+// ─────────────────────────────────────────────────────────────
+function ActivitiesScreen({ onStop }) {
+  return (
+    <div style={{ background: VA.paper, minHeight: '100%', paddingBottom: 100 }}>
+      <TopStatusSpacer />
+      <div style={{ padding: '12px 24px 20px' }}>
+        <Eyebrow>All Activities</Eyebrow>
+        <h1 style={{
+          fontFamily: serif, fontSize: 44, fontWeight: 700, lineHeight: 0.95,
+          margin: '10px 0 0', letterSpacing: -1, color: VA.ink,
+        }}>Every stop<br/>worth stopping for</h1>
+        <p style={{
+          fontFamily: serif, fontStyle: 'italic', fontSize: 15, color: VA.inkSoft,
+          margin: '12px 0 0', lineHeight: 1.45,
+        }}>
+          {TOTAL_ACTIVITIES} activities across the week — a Saturday street market, a state-park picnic, theme-park thrills, go-karts, trampolines, bowling, and game nights at the Port of Call.
+        </p>
+      </div>
+
+      {DAYS.map(d => {
+        const acts = d.stops.filter(isActivity);
+        if (acts.length === 0) return null;
+        return (
+          <div key={d.id}>
+            <div style={{
+              padding: '16px 24px 14px', background: VA.cream,
+              borderTop: `1px solid ${VA.rule}`, borderBottom: `1px solid ${VA.rule}`,
+              display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12,
+            }}>
+              <div>
+                <div style={{
+                  fontFamily: mono, fontSize: 10, color: VA.terracotta,
+                  letterSpacing: 1.5, fontWeight: 500,
+                }}>DAY {d.id} · {d.date.toUpperCase()}</div>
+                <div style={{
+                  fontFamily: serif, fontSize: 22, fontWeight: 600, color: VA.ink,
+                  marginTop: 4, letterSpacing: -0.2, lineHeight: 1.1,
+                }}>{d.city}</div>
+              </div>
+              <div style={{
+                fontFamily: mono, fontSize: 10, color: VA.inkMuted, letterSpacing: 1.2,
+                textTransform: 'uppercase',
+              }}>{acts.length} {acts.length === 1 ? 'activity' : 'activities'}</div>
+            </div>
+            {acts.map((s, i) => (
+              <button key={s.id} onClick={() => onStop(s.id, d.id)} style={{
+                display: 'grid', gridTemplateColumns: '72px 1fr auto', gap: 14,
+                width: '100%', padding: '14px 24px', border: 0, background: 'none',
+                cursor: 'pointer', textAlign: 'left',
+                borderBottom: i === acts.length - 1 ? 'none' : `1px solid ${VA.rule}`,
+                alignItems: 'center',
+              }}>
+                <div style={{
+                  width: 72, height: 72, backgroundImage: `url(${s.image})`,
+                  backgroundSize: 'cover', backgroundPosition: 'center',
+                }} />
+                <div>
+                  <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+                    <span style={{
+                      fontFamily: mono, fontSize: 10, color: VA.ink,
+                      fontWeight: 600, letterSpacing: 0.5,
+                    }}>{s.time}</span>
+                    <Tag bg={VA.forest}>{s.category}</Tag>
+                  </div>
+                  <div style={{
+                    fontFamily: serif, fontSize: 17, fontWeight: 600, color: VA.ink,
+                    marginTop: 5, letterSpacing: -0.2, lineHeight: 1.15,
+                  }}>{s.title}</div>
+                  {(s.short || s.why) && (
+                    <p style={{
+                      fontFamily: sans, fontSize: 12, color: VA.inkSoft, lineHeight: 1.4,
+                      margin: '4px 0 0',
+                    }}>
+                      {s.short || s.why.slice(0, 78) + (s.why.length > 78 ? '…' : '')}
+                    </p>
+                  )}
+                </div>
+                <div style={{
+                  fontFamily: serif, fontSize: 20, color: VA.ink, alignSelf: 'center',
+                }}>→</div>
+              </button>
+            ))}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Map screen
+// ─────────────────────────────────────────────────────────────
+function MapScreen() {
+  const HOME_ORIGIN = '105 Spring Lawn Road, Columbia, SC 29223';
+  const venues = [
+    { name: 'Soda City Market', day: 'Day 1 · Sat', area: 'Downtown · Main Street', address: '1300-1700 Main St, Columbia, SC 29201' },
+    { name: 'The Grand on Main', day: 'Day 1 · Sat', area: 'Downtown · Main Street', address: '1621 Main St, Columbia, SC 29201' },
+    { name: 'Sesquicentennial State Park', day: 'Day 2 · Sun', area: 'NE Columbia · off Two Notch Rd', address: '9564 Two Notch Rd, Columbia, SC 29223' },
+    { name: 'Carowinds', day: 'Day 3 or 4 · Mon/Tue', area: '~90 min north · I-77 toward Charlotte', address: '14523 Carowinds Blvd, Charlotte, NC 28273' },
+    { name: "Frankie's Fun Park", day: 'Day 5 or 6 · Wed/Thu', area: 'Harbison · off I-26', address: '140 Parkridge Dr, Columbia, SC 29212' },
+    { name: 'SURGE Adventure Park', day: 'Day 5 or 6 · Wed/Thu', area: 'N. Columbia · Business Park Blvd', address: '230 Business Park Blvd, Columbia, SC 29203' },
+  ];
+  const directionsUrl = (dest) =>
+    `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(HOME_ORIGIN)}&destination=${encodeURIComponent(dest)}`;
+
+  return (
+    <div style={{ background: VA.paper, minHeight: '100%', paddingBottom: 100 }}>
+      <TopStatusSpacer />
+      <div style={{ padding: '12px 24px 16px' }}>
+        <Eyebrow>Ports of Call</Eyebrow>
+        <h1 style={{
+          fontFamily: serif, fontSize: 44, fontWeight: 700, lineHeight: 0.95,
+          margin: '10px 0 0', letterSpacing: -1, color: VA.ink,
+        }}>Columbia,<br/>by car</h1>
+        <p style={{
+          fontFamily: serif, fontStyle: 'italic', fontSize: 15, color: VA.inkSoft,
+          margin: '12px 0 0', lineHeight: 1.45,
+        }}>
+          Every venue on the week, with live directions from the Port of Call. Tap any stop to open turn-by-turn in Google Maps.
+        </p>
+      </div>
+
+      <div style={{
+        margin: '4px 24px 8px', padding: '16px 18px', background: VA.cream,
+        display: 'flex', gap: 12, alignItems: 'center',
+      }}>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2v20M5 8c0 3.9 3.1 7 7 7s7-3.1 7-7M3 8h4M17 8h4" stroke={VA.forest} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <div>
+          <div style={{ fontFamily: mono, fontSize: 9, color: VA.inkMuted, letterSpacing: 1.3, textTransform: 'uppercase' }}>
+            Home Port
+          </div>
+          <div style={{ fontFamily: sans, fontSize: 13, color: VA.ink, marginTop: 1 }}>
+            Port of Call · 105 Spring Lawn Road
+          </div>
+        </div>
+      </div>
+
+      <div style={{ padding: '8px 0 0' }}>
+        {venues.map((v, i) => (
+          <div key={v.name} style={{
+            padding: '18px 24px',
+            borderTop: `1px solid ${VA.rule}`,
+            borderBottom: i === venues.length - 1 ? `1px solid ${VA.rule}` : 'none',
+          }}>
+            <div style={{
+              fontFamily: mono, fontSize: 10, color: VA.terracotta,
+              letterSpacing: 1.4, fontWeight: 500, textTransform: 'uppercase',
+            }}>{v.day}</div>
+            <div style={{
+              fontFamily: serif, fontSize: 22, fontWeight: 600, color: VA.ink,
+              marginTop: 4, letterSpacing: -0.2, lineHeight: 1.1,
+            }}>{v.name}</div>
+            <div style={{
+              fontFamily: mono, fontSize: 10, color: VA.inkMuted,
+              letterSpacing: 1, textTransform: 'uppercase', marginTop: 7,
+            }}>{v.area}</div>
+            <div style={{
+              fontFamily: sans, fontSize: 13, color: VA.inkSoft, marginTop: 5, lineHeight: 1.4,
+            }}>{v.address}</div>
+            <button onClick={() => window.open(directionsUrl(v.address), '_blank', 'noopener,noreferrer')} style={{
+              marginTop: 14, width: '100%', padding: '12px',
+              background: VA.ink, color: VA.paper, border: 0, cursor: 'pointer',
+              fontFamily: mono, fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', fontWeight: 500,
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            }}>
+              <span>Directions from Port of Call</span>
+              <span>↗</span>
+            </button>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ padding: '20px 24px 0' }}>
+        <p style={{
+          fontFamily: sans, fontSize: 12, color: VA.inkMuted, lineHeight: 1.5, margin: 0,
+        }}>
+          Drive notes are approximate. Carowinds is the only long haul — most everything else is within Columbia.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// App with routing
+// ─────────────────────────────────────────────────────────────
+function App() {
+  const [route, setRoute] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('cola-route')) || { screen: 'home' }; }
+    catch { return { screen: 'home' }; }
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cola-route', JSON.stringify(route));
+    window.scrollTo(0, 0);
+  }, [route]);
+
+  const goHome = () => setRoute({ screen: 'home' });
+  const goItin = () => setRoute({ screen: 'itinerary' });
+  const goActs = () => setRoute({ screen: 'activities' });
+  const goMap  = () => setRoute({ screen: 'map' });
+  const goDay  = (id) => setRoute({ screen: 'day', dayId: id });
+  const goStop = (sid, did) => setRoute({ screen: 'stop', stopId: sid, dayId: did });
+  const onTab = (t) => {
+    if (t === 'home') goHome();
+    if (t === 'itinerary') goItin();
+    if (t === 'activities') goActs();
+    if (t === 'map') goMap();
+  };
+
+  const activeTab = route.screen === 'home' ? 'home'
+    : route.screen === 'activities' ? 'activities'
+    : route.screen === 'map' ? 'map'
+    : 'itinerary';
+
+  let screen;
+  if (route.screen === 'home') screen = <HomeScreen onDay={goDay} onTab={onTab} />;
+  else if (route.screen === 'itinerary') screen = <ItineraryScreen onDay={goDay} />;
+  else if (route.screen === 'activities') screen = <ActivitiesScreen onStop={goStop} />;
+  else if (route.screen === 'map') screen = <MapScreen />;
+  else if (route.screen === 'day') screen = <DayScreen dayId={route.dayId} onDay={goDay} onStop={goStop} onBack={goItin} />;
+  else if (route.screen === 'stop') screen = (
+    <StopDetailScreen
+      stopId={route.stopId}
+      dayId={route.dayId}
+      onBack={(nextStopId) => {
+        if (typeof nextStopId === 'string') {
+          goStop(nextStopId, route.dayId);
+        } else {
+          goDay(route.dayId);
+        }
+      }}
+    />
+  );
+
+  return (
+    <div style={{ background: VA.paper, minHeight: '100dvh' }}>
+      {screen}
+      <div style={{
+        position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 55,
+        maxWidth: 440, margin: '0 auto',
+      }}>
+        <TabBar active={activeTab} onTab={onTab} />
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
