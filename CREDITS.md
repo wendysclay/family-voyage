@@ -2,7 +2,7 @@
 
 All placeholder photos sourced from Wikimedia Commons. Replace with your own photos anytime.
 
-- **images/trip-hero.jpg** — Cruise Ship Sunset View.jpg · CC BY-SA 4.0 · [Shelley Steinhorst](https://commons.wikimedia.org/wiki/File:Cruise_Ship_Sunset_View.jpg)
+- **images/trip-hero.jpg** — The family's own photo (the Port of Call — the rental house).
 - **images/day-1-hero.jpg** — The family's own photo (Carnival cruise ship at port, Embarkation Day).
 - **images/day-2-hero.jpg** — Cruise Ship Sunset View.jpg · CC BY-SA 4.0 · [Shelley Steinhorst](https://commons.wikimedia.org/wiki/File:Cruise_Ship_Sunset_View.jpg) _(placeholder — reuses the cover image; swap for a Saturday/market photo)_
 - **images/day-3-hero.jpg** — Lake Sammamish State Park aerial, April 2023.png · CC0 · [Spicypepper999](https://commons.wikimedia.org/wiki/File:Lake_Sammamish_State_Park_aerial,_April_2023.png)
@@ -11,7 +11,7 @@ All placeholder photos sourced from Wikimedia Commons. Replace with your own pho
 - **images/day-6-hero.jpg** — View of a go-kart racing around the makeshift track at National Sports Centre - geograph.org.uk - 4491252.jpg · CC BY-SA 2.0 · [Robert Lamb](https://commons.wikimedia.org/wiki/File:View_of_a_go-kart_racing_around_the_makeshift_track_at_National_Sports_Centre_-_geograph.org.uk_-_4491252.jpg)
 - **images/day-7-hero.jpg** — Sky Zone Trampoline Park, Lakeland, Florida.jpg · CC BY 4.0 · [Pokemonprime](https://commons.wikimedia.org/wiki/File:Sky_Zone_Trampoline_Park,_Lakeland,_Florida.jpg)
 - **images/day-8-hero.jpg** — Sailboat-sea-sunset-beach.JPG · CC BY-SA 3.0 · [Riana-santos](https://commons.wikimedia.org/wiki/File:Sailboat-sea-sunset-beach.JPG)
-- **images/stop-1-1.jpg** — Pork ribs on a smoker grill.jpg · CC BY-SA 4.0 · [Gatorfan252525](https://commons.wikimedia.org/wiki/File:Pork_ribs_on_a_smoker_grill.jpg) _(Friday welcome cookout)_
+- **images/stop-1-1.jpg** — The family's own photo (the Port of Call backyard — Friday welcome cookout).
 - **images/stop-2-1.jpg** — A roast pork Sunday Lunch dinner Newgate Street Hatfield Hertfordshire England.jpg · CC BY-SA 4.0 · [Acabashi](https://commons.wikimedia.org/wiki/File:A_roast_pork_Sunday_Lunch_dinner_Newgate_Street_Hatfield_Hertfordshire_England.jpg) _(placeholder for the leisurely breakfast; swap for a breakfast photo)_
 - **images/stop-2-2.jpg** — Wine and flowers Otago Farmers Market 13 Dec 2025.jpg · CC BY 4.0 · [DrThneed](https://commons.wikimedia.org/wiki/File:Wine_and_flowers_Otago_Farmers_Market_13_Dec_2025.jpg)
 - **images/stop-2-3.jpg** — The Grand on Main storefront, Columbia SC (captured from Google Maps).
