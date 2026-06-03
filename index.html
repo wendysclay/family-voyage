@@ -93,180 +93,197 @@ const mono = `'JetBrains Mono', ui-monospace, Menlo, monospace`;
 const TRIP_META = {
   title: 'A Family Voyage',
   subtitle: '',
-  startDate: 'July 25, 2026',
+  startDate: 'July 24, 2026',
   endDate: 'July 31, 2026',
-  totalDays: 7,
+  totalDays: 8,
   heroImage: 'images/trip-hero.jpg',
 };
 
 const DAYS = [
   {
-    id: 1, date: 'Sat, Jul 25', fullDate: 'Saturday, July 25, 2026',
-    city: 'Embarkation Day', subtitle: 'Anchors aweigh — arrival & a first night out',
+    id: 1, date: 'Fri, Jul 24', fullDate: 'Friday, July 24, 2026',
+    city: 'Embarkation Day', subtitle: 'All aboard — arrival & a welcome cookout',
     hero: 'images/day-1-hero.jpg',
     lodging: 'Port of Call · 105 Spring Lawn Road',
     stops: [
-      { id: '1-1', time: 'Morning', title: 'Soda City Market', category: 'Market',
+      { id: '1-1', time: 'Evening', title: 'Welcome Cookout', category: 'Dinner',
+        address: 'Port of Call · 105 Spring Lawn Road, Columbia, SC 29223',
+        short: "Kick off the week with a cookout at the Port of Call.",
+        image: 'images/stop-1-1.jpg',
+        why: "The families roll in Friday evening and the voyage begins the only proper way — around the grill. A special welcome cookout at the Port of Call: ribs and all the fixings, the kids tearing around the yard, and the whole crew back together for the first night of the week." },
+    ],
+  },
+  {
+    id: 2, date: 'Sat, Jul 25', fullDate: 'Saturday, July 25, 2026',
+    city: 'Setting Sail', subtitle: 'A slow breakfast, the Saturday market, bowling & a poolside night',
+    hero: 'images/day-2-hero.jpg',
+    lodging: 'Port of Call · 105 Spring Lawn Road',
+    stops: [
+      { id: '2-1', time: 'Morning', title: 'Leisurely Breakfast', category: 'Breakfast',
+        short: "A slow first morning over breakfast at the Port of Call.",
+        image: 'images/stop-2-1.jpg',
+        why: "No alarms on the first full morning. Coffee on, a big unhurried breakfast at the Port of Call, and a slow start before the families head downtown for the market." },
+      { id: '2-2', time: 'Lunchtime', title: 'Soda City Market', category: 'Market',
         duration: '1-2 hrs', address: 'Main St (1300-1700 blocks), Columbia, SC 29201',
         hours: 'Saturdays only · 9:00 AM - 1:00 PM',
-        short: "Columbia's Saturday street market — catch it before settling in.",
-        image: 'images/stop-1-1.jpg',
-        tentative: true, tentativeNote: 'Saturday mornings only — works best if you arrive early',
-        why: "Every Saturday morning several blocks of Main Street close to traffic and fill with an open-air market inspired by the great European street markets — roughly 200 vendors a week. Local farmers, prepared-food stalls, makers and artists line the pavement, all within strolling distance of downtown. It's the market credited with cementing Columbia's affectionate nickname, \"Soda City.\"",
+        short: "Columbia's Saturday street market — go on the early side.",
+        image: 'images/stop-2-2.jpg',
+        tentative: true, tentativeNote: 'Saturday only, 9 AM - 1 PM — head over on the early side of lunchtime',
+        why: "Every Saturday morning several blocks of Main Street close to traffic and fill with an open-air market inspired by the great European street markets — roughly 200 vendors a week. Local farmers, prepared-food stalls, makers and artists line the pavement, all within strolling distance of downtown. Grab lunch from the food stalls — it's the market credited with cementing Columbia's affectionate nickname, \"Soda City.\"",
         facts: [
           "Founded in 2005 with just 6 vendors and about 200 customers; today it averages around 200 vendors a week.",
           "The \"Soda City\" name comes from Columbia's \"Cola\" abbreviation — the market helped make the nickname stick.",
           "It runs every Saturday, year-round, rain or shine, along the 1300-1700 blocks of Main Street.",
         ] },
-      { id: '1-2', time: 'Afternoon', title: 'Pool Time', category: 'Leisure',
-        short: "Settle in at the Port of Call and cool off by the pool.",
-        image: 'images/stop-1-2.jpg',
-        why: "Drop the bags, change into swimsuits, and let the vacation officially begin. The afternoon at the Port of Call is for easing into vacation mode — float, splash, and let the kids burn off the energy from the drive in." },
-      { id: '1-3', time: 'Evening', title: 'Bowling at The Grand on Main', category: 'Bowling',
+      { id: '2-3', time: 'Afternoon', title: 'Bowling at The Grand on Main', category: 'Bowling',
         address: '1621 Main St, Columbia, SC 29201', phone: '(803) 766-0151',
         hours: 'Sat 10:00 AM - 2:00 AM',
         short: "Seven boutique lanes inside a restored downtown theater.",
-        image: 'images/stop-1-3.jpg',
-        why: "A boutique bowling-and-dining spot tucked inside an early-1900s downtown building that once housed a popular theater, with original architectural touches still on display. Just seven lanes make it an intimate, stylish alternative to a big-box alley — pair a game with dinner and, for the grown-ups, a peek at the lower-level Urban Tiki bar.",
+        image: 'images/stop-2-3.jpg',
+        why: "A boutique bowling-and-dining spot tucked inside an early-1900s downtown building that once housed a popular theater, with original architectural touches still on display. Just seven lanes make it an intimate, stylish alternative to a big-box alley — pair a game with a bite and, for the grown-ups, a peek at the lower-level Urban Tiki bar.",
         facts: [
           "Only 7 boutique lanes — cozy rather than cavernous.",
           "The building was once home to a popular downtown theater; some original features remain.",
           "Downstairs hides a Polynesian-themed tiki bar called Urban Tiki.",
         ] },
+      { id: '2-4', time: 'Evening', title: 'Pool Time', category: 'Leisure',
+        short: "Cool off and wind down by the pool at the Port of Call.",
+        image: 'images/stop-2-4.jpg',
+        why: "Back from downtown, the evening is for the pool. Float, splash, and let the kids burn off the day's last bit of energy as the first full day winds down at the Port of Call." },
     ],
   },
   {
-    id: 2, date: 'Sun, Jul 26', fullDate: 'Sunday, July 26, 2026',
+    id: 3, date: 'Sun, Jul 26', fullDate: 'Sunday, July 26, 2026',
     city: 'A Day Ashore', subtitle: 'Church, a picnic at Sesqui, and family game night',
-    hero: 'images/day-2-hero.jpg',
+    hero: 'images/day-3-hero.jpg',
     lodging: 'Port of Call · 105 Spring Lawn Road',
     stops: [
-      { id: '2-1', time: 'Morning', title: 'Church of Choice', category: 'Worship',
+      { id: '3-1', time: 'Morning', title: 'Church of Choice', category: 'Worship',
         short: "Each family picks the service they'd like to attend.",
-        image: 'images/stop-2-1.jpg',
+        image: 'images/stop-3-1.jpg',
         why: "A slow, easy Sunday morning. There's no set congregation on the agenda — each family is free to pick the church and service that suits them, then regroup for the afternoon picnic." },
-      { id: '2-2', time: 'Afternoon', title: 'Picnic at Sesqui Park', category: 'Picnic',
+      { id: '3-2', time: 'Afternoon', title: 'Picnic at Sesqui Park', category: 'Picnic',
         duration: '2-3 hrs',
         address: '9564 Two Notch Rd, Columbia, SC 29223', phone: '(803) 788-2706',
         hours: 'Grounds 8:00 AM - sunset',
         short: "Lunch outdoors at Sesquicentennial State Park after church.",
-        image: 'images/stop-2-2.jpg',
+        image: 'images/stop-3-2.jpg',
         why: "Sesquicentennial — \"Sesqui\" to locals — is a 1,419-acre pocket of pine forest just off Two Notch Road, built around a 30-acre lake with shaded picnic shelters. Spread out the picnic lunch, rent a kayak on the lake, and let the kids loose on the trails. On a hot July afternoon, the splash pad is a genuine cool-down.",
         facts: [
           "The park is named for Columbia's sesquicentennial (150th anniversary), marked in 1936; it opened the next year.",
           "It was built by the Civilian Conservation Corps — the stone entrance and waterfall-like spillway are theirs.",
           "Its splash pad, with 26 sprayers, is the only one in the entire South Carolina State Park System.",
         ] },
-      { id: '2-3', time: 'Evening', title: 'Shawarma Chicken Dinner', category: 'Dinner',
+      { id: '3-3', time: 'Evening', title: 'Shawarma Chicken Dinner', category: 'Dinner',
         short: "Supper back at the Port of Call — shawarma chicken on the menu.",
-        image: 'images/stop-2-3.jpg',
+        image: 'images/stop-3-3.jpg',
         why: "Back at the Port of Call for a homemade supper — shawarma chicken, warm and spiced, served family-style. An easy, flavorful end to a restful Sunday before the games come out." },
-      { id: '2-4', time: 'Evening', title: 'Family Games', category: 'Family',
+      { id: '3-4', time: 'Evening', title: 'Family Games', category: 'Family',
         short: "Game night for all four families.",
-        image: 'images/stop-2-4.jpg',
+        image: 'images/stop-3-4.jpg',
         why: "After dinner, clear the table and bring out the games. A relaxed evening of friendly competition for all four families — cards, board games, and whatever good-natured trash talk follows." },
     ],
   },
   {
-    id: 3, date: 'Mon, Jul 27', fullDate: 'Monday, July 27, 2026',
+    id: 4, date: 'Mon, Jul 27', fullDate: 'Monday, July 27, 2026',
     city: 'Full Speed Ahead', subtitle: 'A day at Carowinds, then a backyard BBQ',
-    hero: 'images/day-3-hero.jpg',
+    hero: 'images/day-4-hero.jpg',
     lodging: 'Port of Call · 105 Spring Lawn Road',
     stops: [
-      { id: '3-1', time: 'All Day', title: 'Carowinds', category: 'Theme Park',
+      { id: '4-1', time: 'All Day', title: 'Carowinds', category: 'Theme Park',
         duration: 'Full day',
         address: '14523 Carowinds Blvd, Charlotte, NC 28273', phone: '(704) 588-2600',
         hours: 'Summer: gates ~10:00 AM (closing varies)',
         tentative: true, tentativeNote: 'Monday or Tuesday — pick your day',
         short: "The Southeast's big thrill park — a day trip up I-77.",
-        image: 'images/stop-3-1.jpg',
+        image: 'images/stop-4-1.jpg',
         why: "Straddling the North/South Carolina line, Carowinds is the Southeast's premier thrill park and an easy day-trip from Columbia. The headliner is Fury 325 — a giga coaster that climbs 325 feet before a 95 mph plunge that actually crosses the state border mid-ride. A full water park, Carolina Harbor, is included, so it's a genuine all-day outing with somewhere to cool off in the July heat.",
         facts: [
           "Fury 325 opened in 2015 as the world's tallest giga coaster (325 ft) and still hits 95 mph.",
           "It's been repeatedly voted the world's best steel coaster at the Golden Ticket Awards.",
           "The park sits right on the NC/SC state line — several rides cross between the two states.",
         ] },
-      { id: '3-2', time: 'Evening', title: 'Backyard BBQ', category: 'Dinner',
+      { id: '4-2', time: 'Evening', title: 'Backyard BBQ', category: 'Dinner',
         short: "Fire up the grill back at the Port of Call.",
-        image: 'images/stop-3-2.jpg',
+        image: 'images/stop-4-2.jpg',
         why: "Whether or not Carowinds lands today, the evening is for a backyard BBQ at the Port of Call — ribs on the grill, sides on the table, and everyone together after a big day." },
     ],
   },
   {
-    id: 4, date: 'Tue, Jul 28', fullDate: 'Tuesday, July 28, 2026',
+    id: 5, date: 'Tue, Jul 28', fullDate: 'Tuesday, July 28, 2026',
     city: 'Open Waters', subtitle: 'A flex day — downtime, or the Carowinds backup',
-    hero: 'images/day-4-hero.jpg',
+    hero: 'images/day-5-hero.jpg',
     lodging: 'Port of Call · 105 Spring Lawn Road',
     stops: [
-      { id: '4-1', time: 'All Day', title: 'Open Day at the Port of Call', category: 'Free Time',
+      { id: '5-1', time: 'All Day', title: 'Open Day at the Port of Call', category: 'Free Time',
         short: "Nothing scheduled — rest, pool, or use it as the Carowinds day.",
-        image: 'images/stop-4-1.jpg',
+        image: 'images/stop-5-1.jpg',
         why: "A deliberate breather in the middle of the week. Sleep in, linger by the pool, explore Columbia at your own pace — or, if you saved Carowinds for today, this is the day to make the run up I-77. However you spend it, there's nothing on the books." },
     ],
   },
   {
-    id: 5, date: 'Wed, Jul 29', fullDate: 'Wednesday, July 29, 2026',
+    id: 6, date: 'Wed, Jul 29', fullDate: 'Wednesday, July 29, 2026',
     city: 'All Hands on Deck', subtitle: "Frankie's Fun Park, then a murder mystery dinner",
-    hero: 'images/day-5-hero.jpg',
+    hero: 'images/day-6-hero.jpg',
     lodging: 'Port of Call · 105 Spring Lawn Road',
     stops: [
-      { id: '5-1', time: 'Afternoon', title: "Frankie's Fun Park", category: 'Fun Park',
+      { id: '6-1', time: 'Afternoon', title: "Frankie's Fun Park", category: 'Fun Park',
         duration: '2-3 hrs',
         address: '140 Parkridge Dr, Columbia, SC 29212', phone: '(803) 781-2342',
         hours: 'Sun-Fri 12:00 PM - midnight · Sat 10:00 AM - midnight',
         tentative: true, tentativeNote: 'Wednesday or Thursday — swaps with SURGE',
         short: "Go-karts, mini golf, laser tag and arcade on the west side.",
-        image: 'images/stop-5-1.jpg',
+        image: 'images/stop-6-1.jpg',
         why: "Frankie's is Columbia's all-in-one fun hub — go-karts, mini golf, laser tag and an arcade in one spot. Three go-kart tracks are graded by skill, from a beginner Rookie Track to a 16-and-up Drifter Track, so a mixed-age group can each find their lane. There's no gate fee — you just pay for what you play.",
         facts: [
           "No admission fee — entry is free and you pay per attraction.",
           "Three separate go-kart tracks tiered by ability, including a Drifter Track for ages 16+.",
           "Mini golf spans three full 18-hole courses — 54 holes in all.",
         ] },
-      { id: '5-2', time: 'Evening', title: 'Murder Mystery Dinner', category: 'Dinner',
+      { id: '6-2', time: 'Evening', title: 'Murder Mystery Dinner', category: 'Dinner',
         short: "A whodunit dinner party back at the Port of Call.",
-        image: 'images/stop-5-2.jpg',
+        image: 'images/stop-6-2.jpg',
         why: "The evening turns the Port of Call into a stage for a murder mystery dinner. Everyone takes a part, dinner is served in courses, and the clues unspool until someone fingers the culprit — equal parts dinner, theater, and family chaos." },
     ],
   },
   {
-    id: 6, date: 'Thu, Jul 30', fullDate: 'Thursday, July 30, 2026',
+    id: 7, date: 'Thu, Jul 30', fullDate: 'Thursday, July 30, 2026',
     city: 'Making Waves', subtitle: 'Bounce it out at SURGE Adventure Park',
-    hero: 'images/day-6-hero.jpg',
+    hero: 'images/day-7-hero.jpg',
     lodging: 'Port of Call · 105 Spring Lawn Road',
     stops: [
-      { id: '6-1', time: 'Afternoon', title: 'SURGE Adventure Park', category: 'Trampoline',
+      { id: '7-1', time: 'Afternoon', title: 'SURGE Adventure Park', category: 'Trampoline',
         duration: '1.5-2 hrs',
         address: '230 Business Park Blvd, Columbia, SC 29203', phone: '(803) 400-6974',
         hours: 'Tue-Thu 11:00 AM - 8:00 PM · CLOSED Mondays',
         tentative: true, tentativeNote: "Wednesday or Thursday — swaps with Frankie's",
         short: "Indoor trampolines, ropes course and climbing walls.",
-        image: 'images/stop-6-1.jpg',
+        image: 'images/stop-7-1.jpg',
         why: "SURGE is Columbia's go-to indoor adventure park — wall-to-wall trampolines plus a ropes course, climbing walls and dodgeball courts under one roof. It's the perfect beat-the-heat (or beat-the-rain) afternoon, and a great way for a wide age range to burn energy in the same place. Grippy socks are required and sold on-site.",
         facts: [
           "Closed every Monday — a weekday or weekend visit is the move.",
           "Toddlers age 2 and under jump free with a paying adult.",
           "Special grippy \"SURGE\" socks are mandatory to jump (buy on-site if you forget).",
         ] },
-      { id: '6-2', time: 'Evening', title: 'Open Evening', category: 'Free Time',
+      { id: '7-2', time: 'Evening', title: 'Open Evening', category: 'Free Time',
         short: "No plans — an easy night back at the Port of Call.",
-        image: 'images/stop-6-2.jpg',
+        image: 'images/stop-7-2.jpg',
         why: "An open evening to keep the week from feeling overscheduled. Order in, swim under the lights, or just put your feet up at the Port of Call before the last full day." },
     ],
   },
   {
-    id: 7, date: 'Fri, Jul 31', fullDate: 'Friday, July 31, 2026',
+    id: 8, date: 'Fri, Jul 31', fullDate: 'Friday, July 31, 2026',
     city: 'Homeward Bound', subtitle: 'One last lunch, then we set sail for home',
-    hero: 'images/day-7-hero.jpg',
+    hero: 'images/day-8-hero.jpg',
     lodging: 'Port of Call · 105 Spring Lawn Road',
     stops: [
-      { id: '7-1', time: 'Midday', title: 'Farewell Lunch', category: 'Lunch',
+      { id: '8-1', time: 'Midday', title: 'Farewell Lunch', category: 'Lunch',
         short: "A final meal together before everyone heads out.",
-        image: 'images/stop-7-1.jpg',
+        image: 'images/stop-8-1.jpg',
         why: "The last gathering of the trip — a farewell lunch at the Port of Call. One more meal together, last hugs and group photos, before the families point their cars toward home." },
-      { id: '7-2', time: 'Afternoon', title: 'Set Sail for Home', category: 'Departure',
+      { id: '8-2', time: 'Afternoon', title: 'Set Sail for Home', category: 'Departure',
         short: "Pack up and depart from the Port of Call.",
-        image: 'images/stop-7-2.jpg',
+        image: 'images/stop-8-2.jpg',
         why: "Bags in the car, one last look around, and the voyage comes to a close. Safe travels home — until the next Port of Call." },
     ],
   },
@@ -395,10 +412,10 @@ function TabBar({ active, onTab }) {
 function getTripDay() {
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const start = new Date(2026, 6, 25); // July 25, 2026 (month is 0-indexed)
+  const start = new Date(2026, 6, 24); // July 24, 2026 (month is 0-indexed)
   const diffDays = Math.round((today - start) / (24 * 60 * 60 * 1000));
   if (diffDays < 0) return { day: 1, phase: 'before', daysUntil: -diffDays };
-  if (diffDays > 6) return { day: 7, phase: 'after' };
+  if (diffDays > 7) return { day: 8, phase: 'after' };
   return { day: diffDays + 1, phase: 'during' };
 }
 
@@ -432,7 +449,7 @@ function HomeScreen({ onDay, onTab }) {
             marginTop: 18, display: 'flex', alignItems: 'center', gap: 12,
             fontFamily: mono, fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase',
           }}>
-            <span>Jul 25</span>
+            <span>Jul 24</span>
             <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.5)' }} />
             <span>Jul 31, 2026</span>
           </div>
@@ -463,7 +480,7 @@ function HomeScreen({ onDay, onTab }) {
           fontFamily: mono, fontSize: 11, letterSpacing: 2, textTransform: 'uppercase',
           fontWeight: 500,
         }}>
-          <span>{phase === 'during' ? "Today's Schedule" : `Day ${today} Schedule`} · {countActivities(DAYS[today-1])} activities</span>
+          <span>{phase === 'during' ? "Today's Schedule" : `Day ${today} Schedule`} · {countActivities(DAYS[today-1])} {countActivities(DAYS[today-1]) === 1 ? 'activity' : 'activities'}</span>
           <span>→</span>
         </button>
       </div>
@@ -475,7 +492,7 @@ function HomeScreen({ onDay, onTab }) {
         <h3 style={{
           fontFamily: serif, fontSize: 26, fontWeight: 600, lineHeight: 1.1,
           color: VA.ink, margin: '8px 0 20px', letterSpacing: -0.3,
-        }}>Seven days, one home port, four families</h3>
+        }}>Eight days, one home port, four families</h3>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
           {DAYS.map((d, i, arr) => (
@@ -592,7 +609,7 @@ function ItineraryScreen({ onDay }) {
         <h1 style={{
           fontFamily: serif, fontSize: 44, fontWeight: 700, lineHeight: 0.95,
           margin: '10px 0 0', letterSpacing: -1, color: VA.ink,
-        }}>All Seven<br/>Days</h1>
+        }}>All Eight<br/>Days</h1>
       </div>
 
       <div>
@@ -1043,7 +1060,7 @@ function ActivitiesScreen({ onStop }) {
           fontFamily: serif, fontStyle: 'italic', fontSize: 15, color: VA.inkSoft,
           margin: '12px 0 0', lineHeight: 1.45,
         }}>
-          {TOTAL_ACTIVITIES} activities across the week — a Saturday street market, a state-park picnic, theme-park thrills, go-karts, trampolines, bowling, and game nights at the Port of Call.
+          {TOTAL_ACTIVITIES} activities across the week — a welcome cookout, the Saturday street market, a state-park picnic, theme-park thrills, go-karts, trampolines, bowling, and game nights at the Port of Call.
         </p>
       </div>
 
@@ -1123,12 +1140,12 @@ function ActivitiesScreen({ onStop }) {
 function MapScreen() {
   const HOME_ORIGIN = '105 Spring Lawn Road, Columbia, SC 29223';
   const venues = [
-    { name: 'Soda City Market', day: 'Day 1 · Sat', area: 'Downtown · Main Street', address: '1300-1700 Main St, Columbia, SC 29201' },
-    { name: 'The Grand on Main', day: 'Day 1 · Sat', area: 'Downtown · Main Street', address: '1621 Main St, Columbia, SC 29201' },
-    { name: 'Sesquicentennial State Park', day: 'Day 2 · Sun', area: 'NE Columbia · off Two Notch Rd', address: '9564 Two Notch Rd, Columbia, SC 29223' },
-    { name: 'Carowinds', day: 'Day 3 or 4 · Mon/Tue', area: '~90 min north · I-77 toward Charlotte', address: '14523 Carowinds Blvd, Charlotte, NC 28273' },
-    { name: "Frankie's Fun Park", day: 'Day 5 or 6 · Wed/Thu', area: 'Harbison · off I-26', address: '140 Parkridge Dr, Columbia, SC 29212' },
-    { name: 'SURGE Adventure Park', day: 'Day 5 or 6 · Wed/Thu', area: 'N. Columbia · Business Park Blvd', address: '230 Business Park Blvd, Columbia, SC 29203' },
+    { name: 'Soda City Market', day: 'Day 2 · Sat', area: 'Downtown · Main Street', address: '1300-1700 Main St, Columbia, SC 29201' },
+    { name: 'The Grand on Main', day: 'Day 2 · Sat', area: 'Downtown · Main Street', address: '1621 Main St, Columbia, SC 29201' },
+    { name: 'Sesquicentennial State Park', day: 'Day 3 · Sun', area: 'NE Columbia · off Two Notch Rd', address: '9564 Two Notch Rd, Columbia, SC 29223' },
+    { name: 'Carowinds', day: 'Day 4 or 5 · Mon/Tue', area: '~90 min north · I-77 toward Charlotte', address: '14523 Carowinds Blvd, Charlotte, NC 28273' },
+    { name: "Frankie's Fun Park", day: 'Day 6 or 7 · Wed/Thu', area: 'Harbison · off I-26', address: '140 Parkridge Dr, Columbia, SC 29212' },
+    { name: 'SURGE Adventure Park', day: 'Day 6 or 7 · Wed/Thu', area: 'N. Columbia · Business Park Blvd', address: '230 Business Park Blvd, Columbia, SC 29203' },
   ];
   const directionsUrl = (dest) =>
     `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(HOME_ORIGIN)}&destination=${encodeURIComponent(dest)}`;

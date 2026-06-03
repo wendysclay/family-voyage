@@ -1,7 +1,7 @@
 # A Family Voyage · Columbia, SC
 
 A self-contained, single-file web app: an interactive agenda for a family vacation
-in **Columbia, South Carolina** (Sat July 25 – Fri July 31, 2026), for four
+in **Columbia, South Carolina** (Fri July 24 – Fri July 31, 2026), for four
 families staying together at the "Port of Call." Phone-shaped, with a cruise /
 ports-of-call aesthetic, one photo per stop, and a venue map with directions.
 
