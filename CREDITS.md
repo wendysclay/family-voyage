@@ -22,7 +22,7 @@ All placeholder photos sourced from Wikimedia Commons. Replace with your own pho
 - **images/stop-3-4.jpg** — Family playing a board game (3).jpg · Public domain · [Bill Branson (Photographer)](https://commons.wikimedia.org/wiki/File:Family_playing_a_board_game_(3).jpg)
 - **images/stop-4-1.jpg** — Fury 325 (Carowinds) 4.jpg · CC BY 2.0 · [Jeremy Thompson](https://commons.wikimedia.org/wiki/File:Fury_325_(Carowinds)_4.jpg)
 - **images/stop-4-2.jpg** — Pork ribs on a smoker grill.jpg · CC BY-SA 4.0 · [Gatorfan252525](https://commons.wikimedia.org/wiki/File:Pork_ribs_on_a_smoker_grill.jpg)
-- **images/stop-5-1.jpg** — Riverbanks Zoo & Garden entrance sign (captured from Google Maps).
+- **images/stop-5-1.jpg** — The family's own photo (a tiger at Riverbanks Zoo, Day 5).
 - **images/stop-6-1.jpg** — View of a go-kart racing around the makeshift track at National Sports Centre - geograph.org.uk - 4491252.jpg · CC BY-SA 2.0 · [Robert Lamb](https://commons.wikimedia.org/wiki/File:View_of_a_go-kart_racing_around_the_makeshift_track_at_National_Sports_Centre_-_geograph.org.uk_-_4491252.jpg)
 - **images/stop-6-2.jpg** — DZ6 2628 Cozy candlelit dinner for two elegant Thai restaurant setting with twinkling lights and a delicate orchid centerpiece.jpg · CC BY-SA 4.0 · [PattayaPatrol](https://commons.wikimedia.org/wiki/File:DZ6_2628_Cozy_candlelit_dinner_for_two_elegant_Thai_restaurant_setting_with_twinkling_lights_and_a_delicate_orchid_centerpiece.jpg)
 - **images/stop-7-1.jpg** — Sprinkler + Trampoline = Fun; Color Splash, Camera+ (7429017844).jpg · CC BY 2.0 · [Stacey from Houston, TX, USA](https://commons.wikimedia.org/wiki/File:Sprinkler_%2B_Trampoline_%3D_Fun;_Color_Splash,_Camera%2B_(7429017844).jpg)
