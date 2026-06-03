@@ -3,7 +3,7 @@
 All placeholder photos sourced from Wikimedia Commons. Replace with your own photos anytime.
 
 - **images/trip-hero.jpg** — Cruise Ship Sunset View.jpg · CC BY-SA 4.0 · [Shelley Steinhorst](https://commons.wikimedia.org/wiki/File:Cruise_Ship_Sunset_View.jpg)
-- **images/day-1-hero.jpg** — MS Sea Princess, Sydney Harbour, 2013.JPG · CC BY-SA 3.0 · [Bahnfrend](https://commons.wikimedia.org/wiki/File:MS_Sea_Princess,_Sydney_Harbour,_2013.JPG)
+- **images/day-1-hero.jpg** — The family's own photo (Carnival cruise ship at port, Embarkation Day).
 - **images/day-2-hero.jpg** — Cruise Ship Sunset View.jpg · CC BY-SA 4.0 · [Shelley Steinhorst](https://commons.wikimedia.org/wiki/File:Cruise_Ship_Sunset_View.jpg) _(placeholder — reuses the cover image; swap for a Saturday/market photo)_
 - **images/day-3-hero.jpg** — Lake Sammamish State Park aerial, April 2023.png · CC0 · [Spicypepper999](https://commons.wikimedia.org/wiki/File:Lake_Sammamish_State_Park_aerial,_April_2023.png)
 - **images/day-4-hero.jpg** — Illuminated Ferris wheel, bouncing castle and carousel at night in a funfair in Vientiane, Laos.jpg · CC BY-SA 4.0 · [Basile Morin](https://commons.wikimedia.org/wiki/File:Illuminated_Ferris_wheel,_bouncing_castle_and_carousel_at_night_in_a_funfair_in_Vientiane,_Laos.jpg)
