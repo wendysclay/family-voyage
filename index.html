@@ -116,7 +116,7 @@ const DAYS = [
   },
   {
     id: 2, date: 'Sat, Jul 25', fullDate: 'Saturday, July 25, 2026',
-    city: 'Setting Sail', subtitle: 'A slow breakfast, the Saturday market, bowling & a poolside night',
+    city: 'Setting Sail', subtitle: 'A slow breakfast, the Saturday market & a Fireflies game',
     hero: 'images/day-2-hero.jpg',
     lodging: 'Port of Call · 105 Spring Lawn Road',
     stops: [
@@ -124,7 +124,7 @@ const DAYS = [
         short: "A slow first morning over breakfast at the Port of Call.",
         image: 'images/stop-2-1.jpg',
         why: "No alarms on the first full morning. Coffee on, a big unhurried breakfast at the Port of Call, and a slow start before the families head downtown for the market." },
-      { id: '2-2', time: 'Lunchtime', title: 'Soda City Market', category: 'Market',
+      { id: '2-2', time: 'Lunchtime', title: 'Soda City Market (optional)', category: 'Market',
         duration: '1-2 hrs', address: 'Main St (1300-1700 blocks), Columbia, SC 29201',
         hours: 'Saturdays only · 9:00 AM - 1:00 PM',
         short: "Columbia's Saturday street market — go on the early side.",
@@ -136,26 +136,23 @@ const DAYS = [
           "The \"Soda City\" name comes from Columbia's \"Cola\" abbreviation — the market helped make the nickname stick.",
           "It runs every Saturday, year-round, rain or shine, along the 1300-1700 blocks of Main Street.",
         ] },
-      { id: '2-3', time: 'Afternoon', title: 'Bowling at The Grand on Main', category: 'Bowling',
-        address: '1621 Main St, Columbia, SC 29201', phone: '(803) 766-0151',
-        hours: 'Sat 10:00 AM - 2:00 AM',
-        short: "Seven boutique lanes inside a restored downtown theater.",
+      { id: '2-3', time: 'Afternoon', title: 'Columbia Fireflies Game', category: 'Baseball',
+        duration: '~3 hrs',
+        address: 'Segra Park · 1640 Freed St, Columbia, SC 29201',
+        hours: 'Game times vary — check the Fireflies schedule',
+        short: "Minor-league baseball downtown at Segra Park.",
         image: 'images/stop-2-3.jpg',
-        why: "A boutique bowling-and-dining spot tucked inside an early-1900s downtown building that once housed a popular theater, with original architectural touches still on display. Just seven lanes make it an intimate, stylish alternative to a big-box alley — pair a game with a bite and, for the grown-ups, a peek at the lower-level Urban Tiki bar.",
+        why: "Take in a Columbia Fireflies game at Segra Park, the downtown ballpark in the BullStreet District. Single-A baseball is made for families — short games, easy prices, and a between-innings promotion every time you turn around. Grab a hot dog, settle into the stands, and let the kids chase foul balls.",
         facts: [
-          "Only 7 boutique lanes — cozy rather than cavernous.",
-          "The building was once home to a popular downtown theater; some original features remain.",
-          "Downstairs hides a Polynesian-themed tiki bar called Urban Tiki.",
+          "The Fireflies are the Single-A affiliate of the Kansas City Royals.",
+          "They play at Segra Park, which opened in Columbia's BullStreet District in 2016.",
+          "Single-A games are short, affordable, and packed with between-innings family promotions.",
         ] },
-      { id: '2-4', time: 'Evening', title: 'Pool Time', category: 'Leisure',
-        short: "Cool off and wind down by the pool at the Port of Call.",
-        image: 'images/stop-2-4.jpg',
-        why: "Back from downtown, the evening is for the pool. Float, splash, and let the kids burn off the day's last bit of energy as the first full day winds down at the Port of Call." },
     ],
   },
   {
     id: 3, date: 'Sun, Jul 26', fullDate: 'Sunday, July 26, 2026',
-    city: 'A Day Ashore', subtitle: 'Church, a picnic at Sesqui, and family game night',
+    city: 'A Day Ashore', subtitle: 'Church, a picnic at Sesqui, then pool time & family games',
     hero: 'images/day-3-hero.jpg',
     lodging: 'Port of Call · 105 Spring Lawn Road',
     stops: [
@@ -179,10 +176,10 @@ const DAYS = [
         short: "Supper back at the Port of Call — shawarma chicken on the menu.",
         image: 'images/stop-3-3.jpg',
         why: "Back at the Port of Call for a homemade supper — shawarma chicken, warm and spiced, served family-style. An easy, flavorful end to a restful Sunday before the games come out." },
-      { id: '3-4', time: 'Evening', title: 'Family Games', category: 'Family',
-        short: "Game night for all four families.",
+      { id: '3-4', time: 'Evening', title: 'Pool Time and Family Games', category: 'Family',
+        short: "Wind down with a swim, then game night for all four families.",
         image: 'images/stop-3-4.jpg',
-        why: "After dinner, clear the table and bring out the games. A relaxed evening of friendly competition for all four families — cards, board games, and whatever good-natured trash talk follows." },
+        why: "Cap the day at the Port of Call — cool off in the pool, then clear the table and bring out the games. A relaxed evening of friendly competition for all four families — cards, board games, and whatever good-natured trash talk follows." },
     ],
   },
   {
@@ -1069,7 +1066,7 @@ function ActivitiesScreen({ onStop }) {
           fontFamily: serif, fontStyle: 'italic', fontSize: 15, color: VA.inkSoft,
           margin: '12px 0 0', lineHeight: 1.45,
         }}>
-          {TOTAL_ACTIVITIES} activities across the week — a welcome cookout, the Saturday street market, a state-park picnic, theme-park thrills, go-karts, trampolines, bowling, and game nights at the Port of Call.
+          {TOTAL_ACTIVITIES} activities across the week — a welcome cookout, the Saturday street market, a Fireflies game, a state-park picnic, theme-park thrills, go-karts, trampolines, and pool & game nights at the Port of Call.
         </p>
       </div>
 
@@ -1150,7 +1147,7 @@ function MapScreen() {
   const HOME_ORIGIN = '105 Spring Lawn Road, Columbia, SC 29223';
   const venues = [
     { name: 'Soda City Market', day: 'Day 2 · Sat', area: 'Downtown · Main Street', address: '1300-1700 Main St, Columbia, SC 29201' },
-    { name: 'The Grand on Main', day: 'Day 2 · Sat', area: 'Downtown · Main Street', address: '1621 Main St, Columbia, SC 29201' },
+    { name: 'Segra Park (Columbia Fireflies)', day: 'Day 2 · Sat', area: 'Downtown · BullStreet District', address: '1640 Freed St, Columbia, SC 29201' },
     { name: 'Sesquicentennial State Park', day: 'Day 3 · Sun', area: 'NE Columbia · off Two Notch Rd', address: '9564 Two Notch Rd, Columbia, SC 29223' },
     { name: 'Carowinds', day: 'Day 4 · Mon', area: '~90 min north · I-77 toward Charlotte', address: '14523 Carowinds Blvd, Charlotte, NC 28273' },
     { name: 'Riverbanks Zoo & Garden', day: 'Day 5 · Tue', area: 'W Columbia · off I-126 (Greystone)', address: '500 Wildlife Pkwy, Columbia, SC 29210' },

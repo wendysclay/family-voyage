@@ -14,12 +14,11 @@ All placeholder photos sourced from Wikimedia Commons. Replace with your own pho
 - **images/stop-1-1.jpg** — The family's own photo (the Port of Call backyard — Friday welcome cookout).
 - **images/stop-2-1.jpg** — A roast pork Sunday Lunch dinner Newgate Street Hatfield Hertfordshire England.jpg · CC BY-SA 4.0 · [Acabashi](https://commons.wikimedia.org/wiki/File:A_roast_pork_Sunday_Lunch_dinner_Newgate_Street_Hatfield_Hertfordshire_England.jpg) _(placeholder for the leisurely breakfast; swap for a breakfast photo)_
 - **images/stop-2-2.jpg** — Wine and flowers Otago Farmers Market 13 Dec 2025.jpg · CC BY 4.0 · [DrThneed](https://commons.wikimedia.org/wiki/File:Wine_and_flowers_Otago_Farmers_Market_13_Dec_2025.jpg)
-- **images/stop-2-3.jpg** — The Grand on Main storefront, Columbia SC (captured from Google Maps).
-- **images/stop-2-4.jpg** — The family's own photo (Pool Time at the Port of Call).
+- **images/stop-2-3.jpg** — _(placeholder — still shows The Grand on Main bowling alley from Google Maps; swap for a Columbia Fireflies / Segra Park photo)._
 - **images/stop-3-1.jpg** — Framlingham, St. Michael's Church, Box pews in the east chapel - geograph.org.uk - 4523316.jpg · CC BY-SA 2.0 · [Michael Garlick](https://commons.wikimedia.org/wiki/File:Framlingham,_St._Michael%27s_Church,_Box_pews_in_the_east_chapel_-_geograph.org.uk_-_4523316.jpg)
 - **images/stop-3-2.jpg** — A Picnic by Schrock Lake in Summer.jpg · CC BY-SA 4.0 · [Sixflashphoto](https://commons.wikimedia.org/wiki/File:A_Picnic_by_Schrock_Lake_in_Summer.jpg)
 - **images/stop-3-3.jpg** — Nasi ayam, Emado's Shawarma Embong Malang, Surabaya, 2025 (01).jpg · CC BY-SA 4.0 · [Bahnfrend](https://commons.wikimedia.org/wiki/File:Nasi_ayam,_Emado%27s_Shawarma_Embong_Malang,_Surabaya,_2025_(01).jpg)
-- **images/stop-3-4.jpg** — Family playing a board game (3).jpg · Public domain · [Bill Branson (Photographer)](https://commons.wikimedia.org/wiki/File:Family_playing_a_board_game_(3).jpg)
+- **images/stop-3-4.jpg** — The family's own photo (Pool Time at the Port of Call — Day 3 pool time & family games).
 - **images/stop-4-1.jpg** — Fury 325 (Carowinds) 4.jpg · CC BY 2.0 · [Jeremy Thompson](https://commons.wikimedia.org/wiki/File:Fury_325_(Carowinds)_4.jpg)
 - **images/stop-4-2.jpg** — Pork ribs on a smoker grill.jpg · CC BY-SA 4.0 · [Gatorfan252525](https://commons.wikimedia.org/wiki/File:Pork_ribs_on_a_smoker_grill.jpg)
 - **images/stop-5-1.jpg** — The family's own photo (a tiger at Riverbanks Zoo, Day 5).
