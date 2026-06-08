@@ -4,7 +4,7 @@ All placeholder photos sourced from Wikimedia Commons. Replace with your own pho
 
 - **images/trip-hero.jpg** — The family's own photo (the Port of Call — the rental house).
 - **images/day-1-hero.jpg** — The family's own photo (Carnival cruise ship at port, Embarkation Day).
-- **images/day-2-hero.jpg** — Cruise Ship Sunset View.jpg · CC BY-SA 4.0 · [Shelley Steinhorst](https://commons.wikimedia.org/wiki/File:Cruise_Ship_Sunset_View.jpg) _(placeholder — reuses the cover image; swap for a Saturday/market photo)_
+- **images/day-2-hero.jpg** — The family's own photo (the garden/backyard at the Port of Call).
 - **images/day-3-hero.jpg** — Lake Sammamish State Park aerial, April 2023.png · CC0 · [Spicypepper999](https://commons.wikimedia.org/wiki/File:Lake_Sammamish_State_Park_aerial,_April_2023.png)
 - **images/day-4-hero.jpg** — Illuminated Ferris wheel, bouncing castle and carousel at night in a funfair in Vientiane, Laos.jpg · CC BY-SA 4.0 · [Basile Morin](https://commons.wikimedia.org/wiki/File:Illuminated_Ferris_wheel,_bouncing_castle_and_carousel_at_night_in_a_funfair_in_Vientiane,_Laos.jpg)
 - **images/day-5-hero.jpg** — Riverbanks Zoo & Garden entrance sign (captured from Google Maps).
@@ -12,7 +12,7 @@ All placeholder photos sourced from Wikimedia Commons. Replace with your own pho
 - **images/day-7-hero.jpg** — Sky Zone Trampoline Park, Lakeland, Florida.jpg · CC BY 4.0 · [Pokemonprime](https://commons.wikimedia.org/wiki/File:Sky_Zone_Trampoline_Park,_Lakeland,_Florida.jpg)
 - **images/day-8-hero.jpg** — Sailboat-sea-sunset-beach.JPG · CC BY-SA 3.0 · [Riana-santos](https://commons.wikimedia.org/wiki/File:Sailboat-sea-sunset-beach.JPG)
 - **images/stop-1-1.jpg** — The family's own photo (the Port of Call backyard — Friday welcome cookout).
-- **images/stop-2-1.jpg** — A roast pork Sunday Lunch dinner Newgate Street Hatfield Hertfordshire England.jpg · CC BY-SA 4.0 · [Acabashi](https://commons.wikimedia.org/wiki/File:A_roast_pork_Sunday_Lunch_dinner_Newgate_Street_Hatfield_Hertfordshire_England.jpg) _(placeholder for the leisurely breakfast; swap for a breakfast photo)_
+- **images/stop-2-1.jpg** — The family's own photo (pancakes at the table — Day 2 leisurely breakfast).
 - **images/stop-2-2.jpg** — Wine and flowers Otago Farmers Market 13 Dec 2025.jpg · CC BY 4.0 · [DrThneed](https://commons.wikimedia.org/wiki/File:Wine_and_flowers_Otago_Farmers_Market_13_Dec_2025.jpg)
 - **images/stop-2-3.jpg** — Segra Park.jpg · CC BY-SA 4.0 · [Dr. Blazer](https://commons.wikimedia.org/wiki/File:Segra_Park.jpg)
 - **images/stop-3-1.jpg** — Framlingham, St. Michael's Church, Box pews in the east chapel - geograph.org.uk - 4523316.jpg · CC BY-SA 2.0 · [Michael Garlick](https://commons.wikimedia.org/wiki/File:Framlingham,_St._Michael%27s_Church,_Box_pews_in_the_east_chapel_-_geograph.org.uk_-_4523316.jpg)
