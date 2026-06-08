@@ -15,7 +15,7 @@ All placeholder photos sourced from Wikimedia Commons. Replace with your own pho
 - **images/stop-2-1.jpg** — The family's own photo (pancakes at the table — Day 2 leisurely breakfast).
 - **images/stop-2-2.jpg** — Wine and flowers Otago Farmers Market 13 Dec 2025.jpg · CC BY 4.0 · [DrThneed](https://commons.wikimedia.org/wiki/File:Wine_and_flowers_Otago_Farmers_Market_13_Dec_2025.jpg)
 - **images/stop-2-3.jpg** — Segra Park.jpg · CC BY-SA 4.0 · [Dr. Blazer](https://commons.wikimedia.org/wiki/File:Segra_Park.jpg)
-- **images/stop-3-1.jpg** — Framlingham, St. Michael's Church, Box pews in the east chapel - geograph.org.uk - 4523316.jpg · CC BY-SA 2.0 · [Michael Garlick](https://commons.wikimedia.org/wiki/File:Framlingham,_St._Michael%27s_Church,_Box_pews_in_the_east_chapel_-_geograph.org.uk_-_4523316.jpg)
+- **images/stop-3-1.jpg** — Northeast Presbyterian Church exterior, Columbia SC (via the church's website, nepresbyterian.org).
 - **images/stop-3-2.jpg** — A Picnic by Schrock Lake in Summer.jpg · CC BY-SA 4.0 · [Sixflashphoto](https://commons.wikimedia.org/wiki/File:A_Picnic_by_Schrock_Lake_in_Summer.jpg)
 - **images/stop-3-3.jpg** — Nasi ayam, Emado's Shawarma Embong Malang, Surabaya, 2025 (01).jpg · CC BY-SA 4.0 · [Bahnfrend](https://commons.wikimedia.org/wiki/File:Nasi_ayam,_Emado%27s_Shawarma_Embong_Malang,_Surabaya,_2025_(01).jpg)
 - **images/stop-3-4.jpg** — The family's own photo (Pool Time at the Port of Call — Day 3 pool time & family games).
