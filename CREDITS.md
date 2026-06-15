@@ -5,7 +5,7 @@ All placeholder photos sourced from Wikimedia Commons. Replace with your own pho
 - **images/trip-hero.jpg** — The family's own photo (the Port of Call — the rental house).
 - **images/day-1-hero.jpg** — The family's own photo (Carnival cruise ship at port, Embarkation Day).
 - **images/day-2-hero.jpg** — The family's own photo (the garden/backyard at the Port of Call).
-- **images/day-3-hero.jpg** — Lake Sammamish State Park aerial, April 2023.png · CC0 · [Spicypepper999](https://commons.wikimedia.org/wiki/File:Lake_Sammamish_State_Park_aerial,_April_2023.png)
+- **images/day-3-hero.jpg** — The family's own photo (wine glasses overlooking a vineyard).
 - **images/day-4-hero.jpg** — Illuminated Ferris wheel, bouncing castle and carousel at night in a funfair in Vientiane, Laos.jpg · CC BY-SA 4.0 · [Basile Morin](https://commons.wikimedia.org/wiki/File:Illuminated_Ferris_wheel,_bouncing_castle_and_carousel_at_night_in_a_funfair_in_Vientiane,_Laos.jpg)
 - **images/day-5-hero.jpg** — Riverbanks Zoo & Garden entrance sign (captured from Google Maps).
 - **images/day-6-hero.jpg** — View of a go-kart racing around the makeshift track at National Sports Centre - geograph.org.uk - 4491252.jpg · CC BY-SA 2.0 · [Robert Lamb](https://commons.wikimedia.org/wiki/File:View_of_a_go-kart_racing_around_the_makeshift_track_at_National_Sports_Centre_-_geograph.org.uk_-_4491252.jpg)
