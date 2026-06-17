@@ -9,7 +9,7 @@ All placeholder photos sourced from Wikimedia Commons. Replace with your own pho
 - **images/day-4-hero.jpg** — Illuminated Ferris wheel, bouncing castle and carousel at night in a funfair in Vientiane, Laos.jpg · CC BY-SA 4.0 · [Basile Morin](https://commons.wikimedia.org/wiki/File:Illuminated_Ferris_wheel,_bouncing_castle_and_carousel_at_night_in_a_funfair_in_Vientiane,_Laos.jpg)
 - **images/day-5-hero.jpg** — Riverbanks Zoo & Garden entrance sign (captured from Google Maps).
 - **images/day-6-hero.jpg** — View of a go-kart racing around the makeshift track at National Sports Centre - geograph.org.uk - 4491252.jpg · CC BY-SA 2.0 · [Robert Lamb](https://commons.wikimedia.org/wiki/File:View_of_a_go-kart_racing_around_the_makeshift_track_at_National_Sports_Centre_-_geograph.org.uk_-_4491252.jpg)
-- **images/day-7-hero.jpg** — Sky Zone Trampoline Park, Lakeland, Florida.jpg · CC BY 4.0 · [Pokemonprime](https://commons.wikimedia.org/wiki/File:Sky_Zone_Trampoline_Park,_Lakeland,_Florida.jpg)
+- **images/day-7-hero.jpg** — The family's own photo (a couple in pirate costumes — Day 7 murder mystery dinner).
 - **images/day-8-hero.jpg** — Sailboat-sea-sunset-beach.JPG · CC BY-SA 3.0 · [Riana-santos](https://commons.wikimedia.org/wiki/File:Sailboat-sea-sunset-beach.JPG)
 - **images/stop-1-1.jpg** — The family's own photo (the Port of Call backyard — Friday welcome cookout).
 - **images/stop-2-1.jpg** — The family's own photo (pancakes at the table — Day 2 leisurely breakfast).
