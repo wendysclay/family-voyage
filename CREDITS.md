@@ -9,7 +9,7 @@ All placeholder photos sourced from Wikimedia Commons. Replace with your own pho
 - **images/day-4-hero.jpg** — Illuminated Ferris wheel, bouncing castle and carousel at night in a funfair in Vientiane, Laos.jpg · CC BY-SA 4.0 · [Basile Morin](https://commons.wikimedia.org/wiki/File:Illuminated_Ferris_wheel,_bouncing_castle_and_carousel_at_night_in_a_funfair_in_Vientiane,_Laos.jpg)
 - **images/day-5-hero.jpg** — Riverbanks Zoo & Garden entrance sign (captured from Google Maps).
 - **images/day-6-hero.jpg** — View of a go-kart racing around the makeshift track at National Sports Centre - geograph.org.uk - 4491252.jpg · CC BY-SA 2.0 · [Robert Lamb](https://commons.wikimedia.org/wiki/File:View_of_a_go-kart_racing_around_the_makeshift_track_at_National_Sports_Centre_-_geograph.org.uk_-_4491252.jpg)
-- **images/day-7-hero.jpg** — The family's own photo (a couple in pirate costumes — Day 7 murder mystery dinner).
+- **images/day-7-hero.jpg** — The family's own photo (a couple in pirate costumes — Day 6 murder mystery dinner).
 - **images/day-8-hero.jpg** — Sailboat-sea-sunset-beach.JPG · CC BY-SA 3.0 · [Riana-santos](https://commons.wikimedia.org/wiki/File:Sailboat-sea-sunset-beach.JPG)
 - **images/stop-1-1.jpg** — The family's own photo (the Port of Call backyard — Friday welcome cookout).
 - **images/stop-2-1.jpg** — The family's own photo (pancakes at the table — Day 2 leisurely breakfast).
@@ -23,8 +23,8 @@ All placeholder photos sourced from Wikimedia Commons. Replace with your own pho
 - **images/stop-4-2.jpg** — The family's own photo (griddle cookout at the Port of Call — Day 4 backyard BBQ).
 - **images/stop-5-1.jpg** — The family's own photo (a tiger at Riverbanks Zoo, Day 5).
 - **images/stop-6-1.jpg** — View of a go-kart racing around the makeshift track at National Sports Centre - geograph.org.uk - 4491252.jpg · CC BY-SA 2.0 · [Robert Lamb](https://commons.wikimedia.org/wiki/File:View_of_a_go-kart_racing_around_the_makeshift_track_at_National_Sports_Centre_-_geograph.org.uk_-_4491252.jpg)
-- **images/stop-6-2.jpg** — The family's own photo (relaxing on a pool float at the Port of Call — Day 6 adult time in the pool).
-- **images/stop-7-1.jpg** — The family's own photo (pizza break at the trampoline park — Day 7 SURGE Adventure Park).
-- **images/stop-7-2.jpg** — The family's own photo (everyone in costume at the murder mystery dinner party — Day 7).
+- **images/stop-6-2.jpg** — The family's own photo (relaxing on a pool float at the Port of Call — Day 7 adult time in the pool).
+- **images/stop-7-1.jpg** — The family's own photo (pizza break at the trampoline park — Day 6 SURGE Adventure Park).
+- **images/stop-7-2.jpg** — The family's own photo (everyone in costume at the murder mystery dinner party — Day 6).
 - **images/stop-8-1.jpg** — A roast pork Sunday Lunch dinner Newgate Street Hatfield Hertfordshire England.jpg · CC BY-SA 4.0 · [Acabashi](https://commons.wikimedia.org/wiki/File:A_roast_pork_Sunday_Lunch_dinner_Newgate_Street_Hatfield_Hertfordshire_England.jpg)
 - **images/stop-8-2.jpg** — Evening car trip (Unsplash).jpg · CC0 · [Patrick Tomasso impatrickt](https://commons.wikimedia.org/wiki/File:Evening_car_trip_(Unsplash).jpg)
