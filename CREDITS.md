@@ -26,5 +26,6 @@ All placeholder photos sourced from Wikimedia Commons. Replace with your own pho
 - **images/stop-6-2.jpg** — The family's own photo (relaxing on a pool float at the Port of Call — Day 7 adult time in the pool).
 - **images/stop-7-1.jpg** — The family's own photo (pizza break at the trampoline park — Day 6 SURGE Adventure Park).
 - **images/stop-7-2.jpg** — The family's own photo (everyone in costume at the murder mystery dinner party — Day 6).
+- **images/stop-7-freeday.jpg** — The family's own photo (the garden/backyard at the Port of Call — Day 7 free day).
 - **images/stop-8-1.jpg** — A roast pork Sunday Lunch dinner Newgate Street Hatfield Hertfordshire England.jpg · CC BY-SA 4.0 · [Acabashi](https://commons.wikimedia.org/wiki/File:A_roast_pork_Sunday_Lunch_dinner_Newgate_Street_Hatfield_Hertfordshire_England.jpg)
 - **images/stop-8-2.jpg** — Evening car trip (Unsplash).jpg · CC0 · [Patrick Tomasso impatrickt](https://commons.wikimedia.org/wiki/File:Evening_car_trip_(Unsplash).jpg)
