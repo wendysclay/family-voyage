@@ -242,7 +242,7 @@ const DAYS = [
         duration: '1.5-2 hrs',
         address: '230 Business Park Blvd, Columbia, SC 29203', phone: '(803) 400-6974',
         hours: 'Tue-Thu 11:00 AM - 8:00 PM · CLOSED Mondays',
-        tentative: true, tentativeNote: "Wednesday or Thursday — swaps with Frankie's",
+        tentative: true, tentativeNote: 'Optional — SURGE is closed Mondays',
         short: "Indoor trampolines, ropes course and climbing walls.",
         image: 'images/stop-7-1.jpg',
         why: "SURGE is Columbia's go-to indoor adventure park — wall-to-wall trampolines plus a ropes course, climbing walls and dodgeball courts under one roof. It's the perfect beat-the-heat (or beat-the-rain) afternoon, and a great way for a wide age range to burn energy in the same place. Grippy socks are required and sold on-site.",
@@ -259,23 +259,14 @@ const DAYS = [
   },
   {
     id: 7, date: 'Thu, Jul 30', fullDate: 'Thursday, July 30, 2026',
-    city: 'All Hands on Deck', subtitle: "Frankie's Fun Park, then adult time in the pool",
+    city: 'Shore Leave', subtitle: 'A free day to relax and catch up with family',
     hero: 'images/day-6-hero.jpg',
     lodging: 'Port of Call · 105 Spring Lawn Road',
     stops: [
-      { id: '6-1', time: 'Afternoon', title: "Frankie's Fun Park", category: 'Fun Park',
-        duration: '2-3 hrs',
-        address: '140 Parkridge Dr, Columbia, SC 29212', phone: '(803) 781-2342',
-        hours: 'Sun-Fri 12:00 PM - midnight · Sat 10:00 AM - midnight',
-        tentative: true, tentativeNote: 'Wednesday or Thursday — swaps with SURGE',
-        short: "Go-karts, mini golf, laser tag and arcade on the west side.",
-        image: 'images/stop-6-1.jpg',
-        why: "Frankie's is Columbia's all-in-one fun hub — go-karts, mini golf, laser tag and an arcade in one spot. Three go-kart tracks are graded by skill, from a beginner Rookie Track to a 16-and-up Drifter Track, so a mixed-age group can each find their lane. There's no gate fee — you just pay for what you play.",
-        facts: [
-          "No admission fee — entry is free and you pay per attraction.",
-          "Three separate go-kart tracks tiered by ability, including a Drifter Track for ages 16+.",
-          "Mini golf spans three full 18-hole courses — 54 holes in all.",
-        ] },
+      { id: '6-1', time: 'All Day', title: 'Free Day', category: 'Free Time',
+        short: "An open day to relax and catch up with family.",
+        image: 'images/stop-3-4.jpg',
+        why: "Today is a free day to relax and catch up with family — no set plans, just time together at the Port of Call and around Columbia however everyone likes." },
       { id: '6-2', time: 'Evening', title: 'Adult Time in the Pool', category: 'Leisure',
         short: "Grown-ups' turn to unwind by the pool at the Port of Call.",
         image: 'images/stop-6-2.jpg',
@@ -1066,7 +1057,7 @@ function ActivitiesScreen({ onStop }) {
           fontFamily: serif, fontStyle: 'italic', fontSize: 15, color: VA.inkSoft,
           margin: '12px 0 0', lineHeight: 1.45,
         }}>
-          {TOTAL_ACTIVITIES} activities across the week — a welcome cookout, the Saturday street market, a Fireflies game, a state-park picnic, theme-park thrills, go-karts, trampolines, and pool & game nights at the Port of Call.
+          {TOTAL_ACTIVITIES} activities across the week — a welcome cookout, the Saturday street market, a Fireflies game, a state-park picnic, theme-park thrills, trampolines, and pool & game nights at the Port of Call.
         </p>
       </div>
 
@@ -1151,8 +1142,7 @@ function MapScreen() {
     { name: 'Sesquicentennial State Park', day: 'Day 3 · Sun', area: 'NE Columbia · off Two Notch Rd', address: '9564 Two Notch Rd, Columbia, SC 29223' },
     { name: 'Carowinds', day: 'Day 4 · Mon', area: '~90 min north · I-77 toward Charlotte', address: '14523 Carowinds Blvd, Charlotte, NC 28273' },
     { name: 'Riverbanks Zoo & Garden', day: 'Day 5 · Tue', area: 'W Columbia · off I-126 (Greystone)', address: '500 Wildlife Pkwy, Columbia, SC 29210' },
-    { name: "Frankie's Fun Park", day: 'Day 6 or 7 · Wed/Thu', area: 'Harbison · off I-26', address: '140 Parkridge Dr, Columbia, SC 29212' },
-    { name: 'SURGE Adventure Park', day: 'Day 6 or 7 · Wed/Thu', area: 'N. Columbia · Business Park Blvd', address: '230 Business Park Blvd, Columbia, SC 29203' },
+    { name: 'SURGE Adventure Park', day: 'Day 6 · Wed', area: 'N. Columbia · Business Park Blvd', address: '230 Business Park Blvd, Columbia, SC 29203' },
   ];
   const directionsUrl = (dest) =>
     `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(HOME_ORIGIN)}&destination=${encodeURIComponent(dest)}`;
