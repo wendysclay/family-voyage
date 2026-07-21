@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B2A45"/>
+      <stop offset="0.62" stop-color="#0E4152"/>
+      <stop offset="1" stop-color="#136B78"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.45" r="0.62">
+      <stop offset="0" stop-color="#F2D793"/>
+      <stop offset="0.55" stop-color="#C9A24B"/>
+      <stop offset="1" stop-color="#C18A33"/>
+    </radialGradient>
+  </defs>
+
+  <g>
+    <!-- sky + sea -->
+    <rect x="0" y="0" width="1024" height="1024" fill="url(#sky)"/>
+
+    <!-- sun -->
+    <circle cx="512" cy="424" r="214" fill="url(#sun)"/>
+
+    <!-- ship (white) -->
+    <g fill="#FFFFFF">
+      <!-- funnels -->
+      <rect x="450" y="356" width="46" height="70" rx="10" fill="#C18A33"/>
+      <rect x="528" y="356" width="46" height="70" rx="10" fill="#C18A33"/>
+      <rect x="450" y="372" width="46" height="12" fill="#0B2A45"/>
+      <rect x="528" y="372" width="46" height="12" fill="#0B2A45"/>
+      <!-- top deck / bridge -->
+      <rect x="404" y="414" width="216" height="46" rx="10"/>
+      <!-- mid deck -->
+      <rect x="352" y="456" width="320" height="52" rx="10"/>
+      <!-- lower deck -->
+      <rect x="302" y="504" width="420" height="58" rx="10"/>
+      <!-- hull -->
+      <path d="M286 560 L738 560 L700 636 Q512 700 324 636 Z"/>
+    </g>
+
+    <!-- accent stripe on hull -->
+    <path d="M300 574 L724 574 L716 590 L308 590 Z" fill="#C18A33"/>
+
+    <!-- portholes -->
+    <g fill="#C9A24B">
+      <circle cx="352" cy="534" r="12"/><circle cx="404" cy="534" r="12"/>
+      <circle cx="456" cy="534" r="12"/><circle cx="508" cy="534" r="12"/>
+      <circle cx="560" cy="534" r="12"/><circle cx="612" cy="534" r="12"/>
+      <circle cx="664" cy="534" r="12"/>
+    </g>
+    <g fill="#136B78">
+      <circle cx="418" cy="482" r="11"/><circle cx="470" cy="482" r="11"/>
+      <circle cx="522" cy="482" r="11"/><circle cx="574" cy="482" r="11"/>
+      <circle cx="626" cy="482" r="11"/>
+    </g>
+
+    <!-- waves -->
+    <path d="M0 636 q128 -46 256 0 t256 0 t256 0 t256 0 v120 H0 Z" fill="#2C8B97"/>
+    <path d="M0 686 q128 -46 256 0 t256 0 t256 0 t256 0 v160 H0 Z" fill="#E7EFF1"/>
+    <path d="M0 732 q128 -40 256 0 t256 0 t256 0 t256 0 v140 H0 Z" fill="#F6FAFB"/>
+  </g>
+</svg>
